@@ -1,5 +1,5 @@
 #include "PhongVIP.h"
-enum DonGiaPhongBT
+enum DonGiaPhongVIP
 {
 	Tang1 = 700000,
 	Tang2 = 650000,

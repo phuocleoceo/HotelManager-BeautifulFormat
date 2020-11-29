@@ -1,3 +1,5 @@
+#include<iostream>
+using namespace std;
 class Date
 {
 private:
@@ -9,4 +11,5 @@ public:
 	Date();
 	Date(int, int, int);
 	~Date();
+	friend ostream& operator<<(ostream&,const Date&);
 };

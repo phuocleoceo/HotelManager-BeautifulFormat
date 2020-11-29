@@ -19,3 +19,7 @@ Date::Date(int day, int month, int year)
 		cout << "Invalid Date Time !" << endl;
 }
 Date::~Date() {}
+ostream &operator<<(ostream &o, const Date &d)
+{
+	cout << d.day << "/" << d.month << "/" << d.year;
+}
