@@ -14,7 +14,7 @@ protected:
 	Date NgayTraPhong;
 	double GiaPhong;
 public:
-	PhongKS(string,int,bool,Date,Date,double);
+	PhongKS(string,int,bool,Date,Date);
 	~PhongKS();
 };
 
