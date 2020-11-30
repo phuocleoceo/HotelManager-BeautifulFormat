@@ -1,10 +1,8 @@
 #include <iostream>
-#include "QLPhong.h"
 #include "UI.h"
 using namespace std;
 int main()
 {
-
 	int FLAG;
 	do
 	{

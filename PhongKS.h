@@ -19,8 +19,8 @@ public:
 	PhongKS();
 	PhongKS(string, int, bool, Date, Date);
 	~PhongKS();
+	string getMSP() const;
 	friend ostream &operator<<(ostream &, const PhongKS &);
-	bool operator==(const PhongKS&);
 };
 
 #endif

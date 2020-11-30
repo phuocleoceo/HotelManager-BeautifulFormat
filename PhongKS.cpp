@@ -9,15 +9,12 @@ PhongKS::PhongKS(string MaPhong, int SoNguoiToiDa, bool TinhTrang, Date NgayNhan
 	this->NgayTraPhong = NgayTraPhong;
 }
 PhongKS::~PhongKS() {}
-
+string PhongKS::getMSP() const
+{
+	return this->MaPhong;
+}
 ostream &operator<<(ostream &o, const PhongKS &p)
 {
 	o << p.MaPhong << "\t" << p.SoNguoiToiDa << "\t" << p.TinhTrang
 	  << "\t" << p.NgayNhanPhong << "\t" << p.NgayTraPhong << "\t" << p.GiaPhong << endl;
-}
-bool PhongKS::operator==(const PhongKS &p)
-{
-	if (this->MaPhong.compare(p.MaPhong) == 0)
-		return true;
-	return false;
 }

@@ -32,6 +32,9 @@ PhongKS &QLPhong::operator[](const int &index)
 		cout << "Chi so khong hop le !" << endl;
 	};
 }
+const PhongKS &QLPhong::operator=(const PhongKS &p)
+{
+}
 void QLPhong::Add(const PhongKS &p)
 {
 	if (this->size == 0)
@@ -56,17 +59,19 @@ void QLPhong::Add(const PhongKS &p)
 	}
 	this->size++;
 }
-int QLPhong::IndexOf(const PhongKS &p)
+int QLPhong::IndexOf(const string &MSP)
 {
 	for (int i = 0; i < this->size; i++)
-		if (this->data[i] == p)
+	{
+		if ((*this)[i].getMSP().compare(MSP) == 0)
 			return i;
+	}
 	return -1;
 }
 void QLPhong::Remove(const PhongKS &p)
 {
-	int k = IndexOf(p);
-	if (k == 1)
+	int k = IndexOf(p.getMSP());
+	if (k == -1)
 		cout << "Khong co phong nay, khong the xoa !" << endl;
 	else
 	{
@@ -93,5 +98,29 @@ void QLPhong::Remove(const PhongKS &p)
 			}
 		}
 		this->size--;
+	}
+}
+void QLPhong::Update(const string &MSP)
+{
+	int k = IndexOf(MSP);
+	if (k == -1)
+		cout << "Khong co phong nay, khong the sua !" << endl;
+	else
+	{
+		Remove((*this)[k]);
+		//Tao ham NewRoom de tao phong moi roi Add no vao mang
+	}
+}
+void QLPhong::Sort()
+{
+	for (int i = 0; i < this->size - 1; i++)
+	{
+		int min = i;
+		for (int j = i + 1; j < this->size; j++)
+		{
+			if ((*this)[j].getMSP().compare((*this)[min].getMSP()) < 0)
+				min = j;
+		}
+		swap((*this)[i], (*this)[min]);
 	}
 }
