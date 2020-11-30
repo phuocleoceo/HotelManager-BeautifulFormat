@@ -13,7 +13,7 @@ public:
 	QLPhong();
 	~QLPhong();
 	PhongKS &operator[](const int &);
-	friend ostream &operator<<(ostream &, const PhongKS &);
+	friend ostream &operator<<(ostream &, const QLPhong &);
 	void Add(const PhongKS &);
 	void IndexOf(const PhongKS &);
 	void Remove(const PhongKS &);
