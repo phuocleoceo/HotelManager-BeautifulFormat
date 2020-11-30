@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-// template<class T>
+template <class T>
 class QLPhong
 {
 private:
@@ -13,12 +13,12 @@ private:
 public:
 	QLPhong();
 	~QLPhong();
-	PhongKS &operator[](const int &);
-	const PhongKS &operator=(const PhongKS &);
+	T &operator[](const int &);
+	const T &operator=(const T &);
 	friend ostream &operator<<(ostream &, const QLPhong &);
-	void Add(const PhongKS &);
+	void Add(const T &);
 	int IndexOf(const string &);
-	void Remove(const PhongKS &);
+	void Remove(const T &);
 	void Update(const string &);
 	void Sort();
 };

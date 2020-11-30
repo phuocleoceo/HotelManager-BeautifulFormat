@@ -1,5 +1,5 @@
 #include <iostream>
-#include "QLPhong.h"
+#include "QLPhong.cpp"
 using namespace std;
 void PrintMenu()
 {

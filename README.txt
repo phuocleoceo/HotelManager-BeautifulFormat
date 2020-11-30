@@ -1,4 +1,4 @@
-- QLPhong: Mảng các PhongKS để quản lý cả PhongBT và phòng Vip
+﻿- QLPhong: Mảng các PhongKS để quản lý cả PhongBT và phòng Vip
 			Exception cho chỉ số mảng không hợp lệ
 			Template(Generic) cho mảng PhongKS
 			Sô lượng phòng tương đương vs size của QLSV
@@ -8,6 +8,8 @@
 
 - Rảnh : Làm kĩ lớp Date (tháng 2 28/29 ngày , tháng 30/31 ngày)
 - Thêm type để phân biệt 2 loại phòng ?
+
+- if tinhtrang=true thi bo qua buoc nhap ngay thang Nhan Tra Phong , roi tao doi tuong vs 2 tham so NULL
 
 Compile and Run : 
 g++ main.cpp Date.cpp PhongKS.cpp PhongBT.cpp PhongVIP.cpp QLPhong.cpp -o run.exe ; ./run.exe 

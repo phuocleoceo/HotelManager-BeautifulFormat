@@ -1,15 +1,18 @@
 #include "QLPhong.h"
 
-QLPhong::QLPhong()
+template <class T>
+QLPhong<T>::QLPhong()
 {
 	this->size = 0;
 	this->data = NULL;
 }
-QLPhong::~QLPhong()
+template <class T>
+QLPhong<T>::~QLPhong()
 {
 	delete[] this->data;
 }
-ostream &operator<<(ostream &o, const QLPhong &ql)
+template <class T>
+ostream &operator<<(ostream &o, const QLPhong<T> &ql)
 {
 	o << "Danh sach Phong : " << endl;
 	for (int i = 0; i < ql.size; i++)
@@ -18,7 +21,9 @@ ostream &operator<<(ostream &o, const QLPhong &ql)
 	}
 	return o;
 }
-PhongKS &QLPhong::operator[](const int &index)
+
+template <class T>
+T &QLPhong<T>::operator[](const int &index)
 {
 	try
 	{
@@ -32,10 +37,12 @@ PhongKS &QLPhong::operator[](const int &index)
 		cout << "Chi so khong hop le !" << endl;
 	};
 }
-const PhongKS &QLPhong::operator=(const PhongKS &p)
+template <class T>
+const T &QLPhong<T>::operator=(const T &p)
 {
 }
-void QLPhong::Add(const PhongKS &p)
+template <class T>
+void QLPhong<T>::Add(const T &p)
 {
 	if (this->size == 0)
 	{
@@ -59,7 +66,8 @@ void QLPhong::Add(const PhongKS &p)
 	}
 	this->size++;
 }
-int QLPhong::IndexOf(const string &MSP)
+template <class T>
+int QLPhong<T>::IndexOf(const string &MSP)
 {
 	for (int i = 0; i < this->size; i++)
 	{
@@ -68,7 +76,8 @@ int QLPhong::IndexOf(const string &MSP)
 	}
 	return -1;
 }
-void QLPhong::Remove(const PhongKS &p)
+template <class T>
+void QLPhong<T>::Remove(const T &p)
 {
 	int k = IndexOf(p.getMSP());
 	if (k == -1)
@@ -100,7 +109,8 @@ void QLPhong::Remove(const PhongKS &p)
 		this->size--;
 	}
 }
-void QLPhong::Update(const string &MSP)
+template <class T>
+void QLPhong<T>::Update(const string &MSP)
 {
 	int k = IndexOf(MSP);
 	if (k == -1)
@@ -111,7 +121,8 @@ void QLPhong::Update(const string &MSP)
 		//Tao ham NewRoom de tao phong moi roi Add no vao mang
 	}
 }
-void QLPhong::Sort()
+template <class T>
+void QLPhong<T>::Sort()
 {
 	for (int i = 0; i < this->size - 1; i++)
 	{
