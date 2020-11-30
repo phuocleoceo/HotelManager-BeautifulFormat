@@ -16,9 +16,11 @@ protected:
 	double GiaPhong;
 
 public:
+	PhongKS();
 	PhongKS(string, int, bool, Date, Date);
 	~PhongKS();
 	friend ostream &operator<<(ostream &, const PhongKS &);
+	bool operator==(const PhongKS&);
 };
 
 #endif

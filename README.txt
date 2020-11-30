@@ -10,5 +10,5 @@
 - Rảnh : Làm kĩ lớp Date (tháng 2 28/29 ngày , tháng 30/31 ngày)
 - Hỏi Thịnh xem thêm biến là sao ? Thêm type để phân biệt 2 loại phòng ?
 
-Compile : 
+Compile and Run : 
 g++ main.cpp Date.cpp PhongKS.cpp PhongBT.cpp PhongVIP.cpp QLPhong.cpp -o run.exe ; ./run.exe 
