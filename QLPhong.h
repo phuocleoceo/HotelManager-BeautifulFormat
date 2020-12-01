@@ -15,10 +15,12 @@ public:
 	~QLPhong();
 	T &operator[](const int &);
 	const T &operator=(const T &);
-	friend ostream &operator<<(ostream &, const QLPhong &);
+	template <class U>
+	friend ostream &operator<<(ostream &, const QLPhong<U> &);
 	void Add(const T &);
 	int IndexOf(const string &);
 	void Remove(const T &);
 	void Update(const string &);
+	void Swap(T&,T&);
 	void Sort();
 };

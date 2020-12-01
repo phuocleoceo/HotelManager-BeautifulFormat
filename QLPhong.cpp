@@ -122,6 +122,13 @@ void QLPhong<T>::Update(const string &MSP)
 	}
 }
 template <class T>
+void Swap(T &p1, T &p2)
+{
+	T temp = p1;
+	p1 = p2;
+	p2 = temp;
+}
+template <class T>
 void QLPhong<T>::Sort()
 {
 	for (int i = 0; i < this->size - 1; i++)
@@ -132,6 +139,6 @@ void QLPhong<T>::Sort()
 			if ((*this)[j].getMSP().compare((*this)[min].getMSP()) < 0)
 				min = j;
 		}
-		swap((*this)[i], (*this)[min]);
+		Swap((*this)[i], (*this)[min]);
 	}
 }
