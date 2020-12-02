@@ -1,9 +1,7 @@
-#ifndef PKS
-#define PKS
-
+#pragma once
 #include <string>
 #include "Date.h"
-#include<iostream>
+#include <iostream>
 using namespace std;
 class PhongKS
 {
@@ -11,16 +9,14 @@ protected:
 	string MaPhong;
 	int SoNguoiToiDa;
 	bool TinhTrang;
-	Date NgayNhanPhong;
-	Date NgayTraPhong;
+	Date *NgayNhanPhong;
+	Date *NgayTraPhong;
 	double GiaPhong;
 
 public:
 	PhongKS();
-	PhongKS(string, int, bool, Date, Date);
 	~PhongKS();
 	string getMSP() const;
-	friend ostream &operator<<(ostream &, const PhongKS &);
+	virtual void Input();
+	virtual void Output();
 };
-
-#endif

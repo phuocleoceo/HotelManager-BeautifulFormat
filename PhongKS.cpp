@@ -1,20 +1,33 @@
 #include "PhongKS.h"
 PhongKS::PhongKS() {}
-PhongKS::PhongKS(string MaPhong, int SoNguoiToiDa, bool TinhTrang, Date NgayNhanPhong, Date NgayTraPhong)
-{
-	this->MaPhong = MaPhong;
-	this->SoNguoiToiDa = SoNguoiToiDa;
-	this->TinhTrang = TinhTrang;
-	this->NgayNhanPhong = NgayNhanPhong;
-	this->NgayTraPhong = NgayTraPhong;
-}
 PhongKS::~PhongKS() {}
 string PhongKS::getMSP() const
 {
 	return this->MaPhong;
 }
-ostream &operator<<(ostream &o, const PhongKS &p)
+void PhongKS::Input()
 {
-	o << p.MaPhong << "\t" << p.SoNguoiToiDa << "\t" << p.TinhTrang
-	  << "\t" << p.NgayNhanPhong << "\t" << p.NgayTraPhong << "\t" << p.GiaPhong << endl;
+	cout << "Nhap ma phong : ";
+	getline(cin, MaPhong);
+	cout << "Nhap so nguoi toi da : ";
+	cin >> SoNguoiToiDa;
+	cout << "Nhap tinh trang (1 hoac 0) : ";
+	cin >> TinhTrang;
+	if (TinhTrang == true)
+	{
+		NgayNhanPhong = NULL;
+		NgayTraPhong = NULL;
+	}
+	else
+	{
+		cout << "Nhap ngay nhan phong : ";
+		cin >> *NgayNhanPhong;
+		cout << "Nhap ngay tra phong : ";
+		cin >> *NgayTraPhong;
+	}
+}
+void PhongKS::Output()
+{
+	cout << MaPhong << "\t" << SoNguoiToiDa << "\t" << TinhTrang
+		 << "\t" << NgayNhanPhong << "\t" << NgayTraPhong << "\t" << GiaPhong << "\t";
 }

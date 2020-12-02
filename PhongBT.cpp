@@ -7,10 +7,11 @@ enum DonGiaPhongBT
 	Tang4 = 350000,
 	Tang5 = 300000
 };
-PhongBT::
-	PhongBT(string MaPhong, int SoNguoiToiDa, bool TinhTrang, Date NgayNhanPhong, Date NgayTraPhong)
-	: PhongKS(MaPhong, SoNguoiToiDa, TinhTrang, NgayNhanPhong, NgayTraPhong)
+PhongBT::PhongBT() {}
+PhongBT::~PhongBT() {}
+void PhongBT::Input()
 {
+	PhongKS::Input();
 	switch (MaPhong[0])
 	{
 	case '1':
@@ -31,4 +32,9 @@ PhongBT::
 	}
 	this->GiaPhong = this->DonGia * this->SoNguoiToiDa;
 }
-PhongBT::~PhongBT() {}
+void PhongBT::Output()
+{
+	cout << "Phong binh thuong : ";
+	PhongKS::Output();
+	cout << DonGia << "\t" << "0" << "\t" << GiaPhong << endl; //O la phu thu Vip
+}

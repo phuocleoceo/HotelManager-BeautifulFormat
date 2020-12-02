@@ -16,10 +16,19 @@ Date::Date(int day, int month, int year)
 		this->year = year;
 	}
 	else
-		cout << "Invalid Date Time !" << endl;
+		cout << "Ngay thang nam khong hop le !" << endl;
 }
 Date::~Date() {}
 ostream &operator<<(ostream &o, const Date &d)
 {
-	o << d.day << "/" << d.month << "/" << d.year;
+	o << d.day << " / " << d.month << " / " << d.year << endl;
+}
+istream &operator>>(istream &i, Date &d)
+{
+	cout << "Nhap ngay : ";
+	i >> d.day;
+	cout << "Nhap thang : ";
+	i >> d.month;
+	cout << "Nhap nam : ";
+	i >> d.year;
 }

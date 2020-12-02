@@ -8,9 +8,11 @@ enum DonGiaPhongVIP
 	Tang5 = 500000
 };
 
-PhongVip::PhongVip(string MaPhong, int SoNguoiToiDa, bool TinhTrang, Date NgayNhanPhong, Date NgayTraPhong)
-	: PhongKS(MaPhong, SoNguoiToiDa, TinhTrang, NgayNhanPhong, NgayTraPhong)
+PhongVip::PhongVip() {}
+PhongVip::~PhongVip() {}
+void PhongVip::Input()
 {
+	PhongKS::Input();
 	switch (MaPhong[0])
 	{
 	case '1':
@@ -32,4 +34,9 @@ PhongVip::PhongVip(string MaPhong, int SoNguoiToiDa, bool TinhTrang, Date NgayNh
 	this->PhuThuVIP = this->SoNguoiToiDa / 10;
 	this->GiaPhong = (this->DonGia * this->SoNguoiToiDa) + (this->PhuThuVIP * this->DonGia);
 }
-PhongVip::~PhongVip() {}
+void PhongVip::Output()
+{
+	cout << "Phong loai Vip : ";
+	PhongKS::Output();
+	cout << DonGia << "\t" << PhuThuVIP << "\t" << GiaPhong << endl;
+}
