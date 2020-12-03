@@ -1,8 +1,12 @@
 #include <iostream>
-#include "QLPhong.h"
+#include "QLPhong.cpp"
+#include "PhongVIP.h"
+#include "PhongBT.h"
 using namespace std;
 int main()
 {
+	QLPhong<PhongKS> *qlp = new QLPhong<PhongKS>;
+	qlp->Input();
 	int FLAG;
 	do
 	{

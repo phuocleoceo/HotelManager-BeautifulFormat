@@ -1,14 +1,16 @@
 #include "PhongKS.h"
+#include "PhongBT.h"
+#include "PhongVIP.h"
 #include <iostream>
 #include <string>
+#include "Vector.cpp"
 using namespace std;
 
 template <class T>
 class QLPhong
 {
 private:
-	PhongKS **data;
-	int size;
+	Vector<PhongKS *> data;
 
 public:
 	QLPhong();
@@ -17,10 +19,12 @@ public:
 	const T &operator=(const T &);
 	template <class U>
 	friend ostream &operator<<(ostream &, const QLPhong<U> &);
-	void Add(const T &);
+	void Input();
+	void Add(T*);
 	int IndexOf(const string &);
-	void Remove(const T &);
+	void RemoveAt(const int &);
+	void Remove(T*);
 	void Update(const string &);
-	void Swap(T&,T&);
-	void Sort();
+	void Swap(T &, T &);
+	void Sort(bool (*CompareChoice)(string, string));
 };

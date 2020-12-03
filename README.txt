@@ -12,7 +12,7 @@
 - if tinhtrang=true thi bo qua buoc nhap ngay thang Nhan Tra Phong , roi tao doi tuong vs 2 tham so NULL
 
 Compile and Run : 
-g++ main.cpp Date.cpp PhongKS.cpp PhongBT.cpp PhongVIP.cpp QLPhong.cpp -std=c++11 -o run.exe ; ./run.exe 
+g++ Program.cpp Date.cpp PhongKS.cpp PhongBT.cpp PhongVIP.cpp QLPhong.cpp -std=c++11 -o run.exe ; ./run.exe 
 
 
 Tạo 2 mảng bằng template , tạo 1 mảng ** của PhongKS để quản lý 2 mảng kia
