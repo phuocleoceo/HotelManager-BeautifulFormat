@@ -37,5 +37,6 @@ void PhongVip::Input()
 void PhongVip::Output()
 {
 	PhongKS::Output();
-	cout << DonGia << "\t" << PhuThuVIP << "\t" << GiaPhong << endl;
+	// cout << DonGia << "\t" << PhuThuVIP << "\t" << GiaPhong << endl;
+	cout << setw(7) << DonGia << " | " << setw(11) << PhuThuVIP << " | " << setw(15) << GiaPhong << " | " << endl;
 }

@@ -6,9 +6,9 @@ Date::~Date() {}
 ostream &operator<<(ostream &o, const Date &d)
 {
 	if (&d != NULL)
-		o << d.day << "/" << d.month << "/" << d.year;
+		o << "     " << setw(2) << d.day << "/" << setw(2) << d.month << "/" << setw(4) << d.year;
 	else
-		o << "    NULL  ";
+		o << setw(15) << "NULL";
 }
 istream &operator>>(istream &i, Date &d)
 {
