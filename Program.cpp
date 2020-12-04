@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
 	QLPhong<PhongKS> *qlp = new QLPhong<PhongKS>;
+	string MSP;
 	int FLAG;
 	do
 	{
@@ -28,6 +29,10 @@ int main()
 			qlp->Input();
 			break;
 		case 2:
+			cout<<"Nhap ma so phong can sua : ";
+			cin.ignore();
+			getline(cin,MSP);
+			qlp->Update(MSP);
 			break;
 		case 3:
 			break;

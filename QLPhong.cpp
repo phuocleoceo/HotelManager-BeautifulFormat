@@ -14,7 +14,7 @@ QLPhong<T>::~QLPhong()
 }
 
 template <class T>
-T &QLPhong<T>::operator[](const int &index)
+T* QLPhong<T>::operator[](const int &index)
 {
 	try
 	{
@@ -75,7 +75,7 @@ int QLPhong<T>::IndexOf(const string &MSP)
 {
 	for (int i = 0; i < this->size; i++)
 	{
-		if ((*this)[i].getMSP().compare(MSP) == 0)
+		if ((*this)[i]->getMSP().compare(MSP) == 0)
 			return i;
 	}
 	return -1;
@@ -118,7 +118,7 @@ void QLPhong<T>::RemoveAt(const int &k)
 template <class T>
 void QLPhong<T>::Remove(T *p)
 {
-	int k = IndexOf(p.getMSP());
+	int k = IndexOf(p->getMSP());
 	if (k == -1)
 		cout << "Khong co phong nay, khong the xoa !" << endl;
 	else
@@ -141,11 +141,11 @@ void QLPhong<T>::Update(const string &MSP)
 }
 
 template <class T>
-void Swap(T &p1, T &p2)
+void QLPhong<T>::Swap(T* p1, T* p2)
 {
-	T temp = p1;
-	p1 = p2;
-	p2 = temp;
+	T *temp = p1;
+	*p1 = *p2;
+	*p2 = *temp;
 }
 
 bool Ascending(string a, string b)

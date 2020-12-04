@@ -15,7 +15,7 @@ private:
 public:
 	QLPhong();
 	~QLPhong();
-	T &operator[](const int &);
+	T* operator[](const int &);
 	const T &operator=(const T &);
 	template <class U>
 	friend ostream &operator<<(ostream &, const QLPhong<U> &);
@@ -26,6 +26,6 @@ public:
 	void RemoveAt(const int &);
 	void Remove(T *);
 	void Update(const string &);
-	void Swap(T &, T &);
+	void Swap(T*, T*);
 	void Sort(bool (*CompareChoice)(string, string));
 };
