@@ -14,7 +14,7 @@ QLPhong<T>::~QLPhong()
 }
 
 template <class T>
-T* QLPhong<T>::operator[](const int &index)
+T *QLPhong<T>::operator[](const int &index)
 {
 	try
 	{
@@ -141,11 +141,11 @@ void QLPhong<T>::Update(const string &MSP)
 }
 
 template <class T>
-void QLPhong<T>::Swap(T* p1, T* p2)
+void QLPhong<T>::Swap(T *p1, T *p2)
 {
 	T *temp = p1;
-	*p1 = *p2;
-	*p2 = *temp;
+	p1 = p2;
+	p2 = temp;
 }
 
 bool Ascending(string a, string b)
@@ -159,15 +159,37 @@ bool Descending(string a, string b)
 }
 
 template <class T>
-void QLPhong<T>::Sort(bool (*CompareChoice)(string, string))
+void QLPhong<T>::Sort()
 {
+	bool (*CompareChoice)(string, string);
+	int flag;
+	while (true)
+	{
+		cout << "*========================Moi ban chon:=======================*" << endl;
+		cout << "+----------------------+-------------------------------------+" << endl;
+		cout << "|   1. SX tang dan    |    2. SX giam dan    |   0. Thoat    |" << endl;
+		cout << "+----------------------+-------------------------------------+" << endl;
+		cout << "Nhap lua chon : ";
+		cin >> flag;
+		if (flag == 1)
+		{
+			CompareChoice = Ascending;
+		}
+		else if (flag == 2)
+		{
+			CompareChoice = Descending;
+		}
+		else if (flag == 0)
+			return;
+		else
+			cout << "Lua chon khong hop le ! " << endl;
+	}
 	for (int i = 0; i < this->size - 1; i++)
 	{
 		int min = i;
 		for (int j = i + 1; j < this->size; j++)
 		{
-			// if ((*this)[j].getMSP().compare((*this)[min].getMSP()) < 0)
-			if (CompareChoice((*this)[j].getMSP(), (*this)[min].getMSP()))
+			if (CompareChoice((*this)[j]->getMSP(), (*this)[min]->getMSP()))
 				min = j;
 		}
 		Swap((*this)[i], (*this)[min]);
@@ -210,6 +232,14 @@ template <class T>
 ostream &operator<<(ostream &o, const QLPhong<T> &ql)
 {
 	o << "Danh sach phong : " << endl;
+	o << "Ma phong\t"
+	  << "So nguoi toi da\t"
+	  << "Tinh trang\t"
+	  << "Ngay nhan phong\t"
+	  << "Ngay tra phong\t"
+	  << "Don gia\t"
+	  << "Phu thu VIP\t"
+	  << "Gia phong" << endl;
 	for (int i = 0; i < ql.size; i++)
 	{
 		ql.data[i]->Output();

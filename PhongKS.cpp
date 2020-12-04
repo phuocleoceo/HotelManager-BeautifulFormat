@@ -33,14 +33,6 @@ void PhongKS::Input()
 }
 void PhongKS::Output()
 {
-	cout << "Ma phong\t"
-		 << "So nguoi toi da\t"
-		 << "Tinh trang\t"
-		 << "Ngay nhan phong\t"
-		 << "Ngay tra phong\t"
-		 << "Don gia\t"
-		 << "Phu thu VIP\t"
-		 << "Gia phong" << endl;
 	cout << MaPhong << "\t" << SoNguoiToiDa << "\t" << TinhTrang
 		 << "\t" << *NgayNhanPhong << "\t" << *NgayTraPhong << "\t";
 }

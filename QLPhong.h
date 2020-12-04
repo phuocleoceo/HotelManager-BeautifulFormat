@@ -19,13 +19,13 @@ public:
 	const T &operator=(const T &);
 	template <class U>
 	friend ostream &operator<<(ostream &, const QLPhong<U> &);
-	void Input();
 	void Add(T *, const int &);
 	void Add(T *);
 	int IndexOf(const string &);
 	void RemoveAt(const int &);
 	void Remove(T *);
-	void Update(const string &);
+	void Update(const string &);	
+	void Input();
 	void Swap(T*, T*);
-	void Sort(bool (*CompareChoice)(string, string));
+	void Sort();
 };
