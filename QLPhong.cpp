@@ -136,8 +136,6 @@ void QLPhong<T>::Update(const string &MSP)
 		RemoveAt(k);
 		cout << "Nhap thong tin moi cho phong nay : " << endl;
 		Input();
-		// Swap((*this)[k], (*this)[this->size - 1]);
-		// Remove((*this)[this->size - 1]);
 	}
 }
 
@@ -187,13 +185,14 @@ void QLPhong<T>::Sort()
 	}
 	for (int i = 0; i < this->size - 1; i++)
 	{
-		int min = i;
+		int flag = i;
 		for (int j = i + 1; j < this->size; j++)
 		{
-			if (CompareChoice((*this)[j]->getMSP(), (*this)[min]->getMSP()))
-				min = j;
+			if (CompareChoice((*this)[j]->getMSP(), (*this)[flag]->getMSP()))
+				// if (((*this)[j]->getMSP()).compare((*this)[min]->getMSP()) < 0)
+				flag = j;
 		}
-		Swap((*this)[i], (*this)[min]);
+		Swap((*(this->data+i), *(this->data+flag));
 	}
 }
 
@@ -233,7 +232,7 @@ template <class T>
 ostream &operator<<(ostream &o, const QLPhong<T> &ql)
 {
 	o << "Danh sach phong : " << endl;
-	
+
 	o << "| Ma phong "
 	  << "| So nguoi toi da "
 	  << "| Tinh trang "
