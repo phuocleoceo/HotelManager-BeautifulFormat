@@ -19,7 +19,7 @@ T *QLPhong<T>::operator[](const int &index)
 	try
 	{
 		if (index >= 0 && index < this->size)
-			return this->data[index];
+			return *(this->data + index);
 		else
 			throw NULL;
 	}
@@ -139,14 +139,6 @@ void QLPhong<T>::Update(const string &MSP)
 	}
 }
 
-template <class T>
-void QLPhong<T>::Swap(T *p1, T *p2)
-{
-	T temp = *p1;
-	*p1 = *p2;
-	*p2 = temp;
-}
-
 bool Ascending(string a, string b)
 {
 	return a.compare(b) > 0;
@@ -183,16 +175,18 @@ void QLPhong<T>::Sort()
 		else
 			cout << "Lua chon khong hop le ! " << endl;
 	}
+	T *temp = new T;
 	for (int i = 0; i < this->size - 1; i++)
 	{
 		int flag = i;
 		for (int j = i + 1; j < this->size; j++)
 		{
-			if (CompareChoice((*this)[j]->getMSP(), (*this)[flag]->getMSP()))
-				// if (((*this)[j]->getMSP()).compare((*this)[min]->getMSP()) < 0)
+			if (CompareChoice((*(this->data + flag))->getMSP(), (*(this->data + j))->getMSP()))
 				flag = j;
 		}
-		Swap((*(this->data+i), *(this->data+flag));
+		*temp = *(*(this->data + i));
+		*(*(this->data + i)) = *(*(this->data + flag));
+		*(*(this->data + flag)) = *temp;
 	}
 }
 
@@ -232,7 +226,7 @@ template <class T>
 ostream &operator<<(ostream &o, const QLPhong<T> &ql)
 {
 	o << "Danh sach phong : " << endl;
-
+	o << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
 	o << "| Ma phong "
 	  << "| So nguoi toi da "
 	  << "| Tinh trang "
@@ -241,6 +235,7 @@ ostream &operator<<(ostream &o, const QLPhong<T> &ql)
 	  << "| Don gia "
 	  << "| Phu thu VIP "
 	  << "|    Gia phong    |" << endl;
+	o << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
 	for (int i = 0; i < ql.size; i++)
 	{
 		ql.data[i]->Output();

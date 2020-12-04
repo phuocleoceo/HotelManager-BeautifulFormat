@@ -37,8 +37,6 @@ void PhongKS::Input()
 }
 void PhongKS::Output()
 {
-	// cout << MaPhong << "\t" << SoNguoiToiDa << "\t" << TinhTrang
-	// 	 << "\t" << *NgayNhanPhong << "\t" << *NgayTraPhong << "\t";
 	cout << "| " << setw(8) << MaPhong << " | " << setw(15) << SoNguoiToiDa << " | " << setw(10) << TinhTrang
-		 << " | " << *NgayNhanPhong << " | " << *NgayTraPhong << " | ";
+		 << " | " << *NgayNhanPhong << " | " << *NgayTraPhong << " | ";	
 }

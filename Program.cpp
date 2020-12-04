@@ -53,6 +53,7 @@ int main()
 			{
 				cout << "Phong can tim co thong tin la : " << endl;
 				cout << qlp[Vitri];
+				//ToDo
 			}
 			else
 				cout << "Khong tim thay ! " << endl;

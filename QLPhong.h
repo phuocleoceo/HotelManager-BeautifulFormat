@@ -26,6 +26,5 @@ public:
 	void Remove(T *);
 	void Update(const string &);	
 	void Input();
-	void Swap(T*, T*);
 	void Sort();
 };
