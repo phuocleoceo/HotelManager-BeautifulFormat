@@ -12,7 +12,7 @@ private:
 public:
 	Date();
 	~Date();
-	bool checkDate();
+	bool checkLeapYear();
 	friend ostream &operator<<(ostream &, const Date &);
 	friend istream &operator>>(istream &, Date &);
 };

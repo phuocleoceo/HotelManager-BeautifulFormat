@@ -20,7 +20,7 @@ istream &operator>>(istream &i, Date &d)
 	i >> d.year;
 	return i;
 }
-bool Date::checkDate()
+bool Date::checkLeapYear()
 {
 	time_t now = time(0);
 	tm *ltm = localtime(&now);

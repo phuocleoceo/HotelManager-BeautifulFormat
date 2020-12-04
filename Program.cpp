@@ -52,8 +52,8 @@ int main()
 			if (Vitri != -1)
 			{
 				cout << "Phong can tim co thong tin la : " << endl;
-				cout << qlp[Vitri];
-				//ToDo
+				cout << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
+				(*qlp)[Vitri]->Output();
 			}
 			else
 				cout << "Khong tim thay ! " << endl;
