@@ -34,7 +34,6 @@ void PhongBT::Input()
 }
 void PhongBT::Output()
 {
-	cout << "Phong binh thuong : ";
 	PhongKS::Output();
 	cout << DonGia << "\t" << "0" << "\t" << GiaPhong << endl; //O la phu thu Vip
 }

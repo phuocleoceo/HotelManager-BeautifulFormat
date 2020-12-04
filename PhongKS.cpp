@@ -1,5 +1,9 @@
 #include "PhongKS.h"
-PhongKS::PhongKS() {}
+PhongKS::PhongKS()
+{
+	NgayNhanPhong = new Date;
+	NgayTraPhong = new Date;
+}
 PhongKS::~PhongKS() {}
 string PhongKS::getMSP() const
 {
@@ -8,6 +12,7 @@ string PhongKS::getMSP() const
 void PhongKS::Input()
 {
 	cout << "Nhap ma phong : ";
+	cin.ignore();
 	getline(cin, MaPhong);
 	cout << "Nhap so nguoi toi da : ";
 	cin >> SoNguoiToiDa;
@@ -28,6 +33,14 @@ void PhongKS::Input()
 }
 void PhongKS::Output()
 {
+	cout << "Ma phong\t"
+		 << "So nguoi toi da\t"
+		 << "Tinh trang\t"
+		 << "Ngay nhan phong\t"
+		 << "Ngay tra phong\t"
+		 << "Don gia\t"
+		 << "Phu thu VIP\t"
+		 << "Gia phong" << endl;
 	cout << MaPhong << "\t" << SoNguoiToiDa << "\t" << TinhTrang
-		 << "\t" << NgayNhanPhong << "\t" << NgayTraPhong << "\t" << GiaPhong << "\t";
+		 << "\t" << *NgayNhanPhong << "\t" << *NgayTraPhong << "\t";
 }

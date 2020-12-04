@@ -6,7 +6,6 @@ using namespace std;
 int main()
 {
 	QLPhong<PhongKS> *qlp = new QLPhong<PhongKS>;
-	qlp->Input();
 	int FLAG;
 	do
 	{
@@ -21,16 +20,19 @@ int main()
 
 		cout << "\nLua chon cua ban la : ";
 		cin >> FLAG;
+		system("cls");
 		cout << "------------------------------------------------------------------------" << endl;
 		switch (FLAG)
 		{
 		case 1:
+			qlp->Input();
 			break;
 		case 2:
 			break;
 		case 3:
 			break;
 		case 4:
+			cout << *qlp;
 			break;
 		case 5:
 			break;

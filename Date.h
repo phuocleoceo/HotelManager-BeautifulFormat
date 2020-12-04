@@ -9,7 +9,6 @@ private:
 
 public:
 	Date();
-	Date(int, int, int);
 	~Date();
 	friend ostream &operator<<(ostream &, const Date &);
 	friend istream &operator>>(istream &, Date &);

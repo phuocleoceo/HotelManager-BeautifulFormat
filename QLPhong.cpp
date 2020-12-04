@@ -1,9 +1,17 @@
 #include "QLPhong.h"
 
 template <class T>
-QLPhong<T>::QLPhong() {}
+QLPhong<T>::QLPhong()
+{
+	this->data = nullptr;
+	this->size = 0;
+}
+
 template <class T>
-QLPhong<T>::~QLPhong() {}
+QLPhong<T>::~QLPhong()
+{
+	delete[] this->data;
+}
 
 template <class T>
 T &QLPhong<T>::operator[](const int &index)
@@ -20,30 +28,93 @@ T &QLPhong<T>::operator[](const int &index)
 		cout << "Chi so khong hop le !" << endl;
 	};
 }
+
 template <class T>
 const T &QLPhong<T>::operator=(const T &p)
 {
 }
+
+template <class T>
+void QLPhong<T>::Add(T *p, const int &k)
+{
+	if (this->size == 0)
+	{
+		this->data = new T *[this->size + 1];
+		this->data[this->size] = p;
+	}
+	else
+	{
+		T **temp = new T *[this->size];
+		for (int i = 0; i < this->size; i++)
+		{
+			*(temp + i) = *(this->data + i);
+		}
+		delete[] this->data;
+		this->data = new T *[this->size + 1];
+		this->data[k] = p;
+		for (int i = 0; i < k; i++)
+		{
+			*(this->data + i) = *(temp + i);
+		}
+		for (int i = k + 1; i <= this->size; i++)
+		{
+			*(this->data + i) = *(temp + i - 1);
+		}
+	}
+	this->size++;
+}
+
 template <class T>
 void QLPhong<T>::Add(T *p)
 {
-	data.Add(p);
+	Add(p, this->size);
 }
+
 template <class T>
 int QLPhong<T>::IndexOf(const string &MSP)
 {
-	for (int i = 0; i < data.length(); i++)
+	for (int i = 0; i < this->size; i++)
 	{
-		if (MSP.compare((data[i]->getMSP())) == 0)
+		if ((*this)[i].getMSP().compare(MSP) == 0)
 			return i;
 	}
 	return -1;
 }
+
 template <class T>
 void QLPhong<T>::RemoveAt(const int &k)
 {
-	data.Remove(k);
+	if (k == 0 && this->size == 1)
+	{
+		delete[] this->data;
+		this->data = nullptr;
+		this->size = 0;
+	}
+	else if (k >= this->size)
+	{
+		return;
+	}
+	else
+	{
+		for (int i = k; i < this->size - 1; i++)
+		{
+			this->data[i] = this->data[i + 1];
+		}
+		T **temp = new T *[this->size];
+		for (int i = 0; i < this->size - 1; i++)
+		{
+			*(temp + i) = *(this->data + i);
+		}
+		delete[] this->data;
+		this->data = new T *[this->size - 1];
+		for (int i = 0; i < this->size - 1; i++)
+		{
+			*(this->data + i) = *(temp + i);
+		}
+	}
+	this->size--;
 }
+
 template <class T>
 void QLPhong<T>::Remove(T *p)
 {
@@ -53,6 +124,7 @@ void QLPhong<T>::Remove(T *p)
 	else
 		RemoveAt(k);
 }
+
 template <class T>
 void QLPhong<T>::Update(const string &MSP)
 {
@@ -61,10 +133,13 @@ void QLPhong<T>::Update(const string &MSP)
 		cout << "Khong co phong nay, khong the sua !" << endl;
 	else
 	{
-		Remove((*this)[k]);
-		//Tao ham NewRoom de tao phong moi roi Add no vao mang hoac gan no bang newPhong
+		cout << "Nhap thong tin moi cho phong nay : " << endl;
+		Input();
+		Swap((*this)[k], (*this)[this->size - 1]);
+		Remove((*this)[this->size - 1]);
 	}
 }
+
 template <class T>
 void Swap(T &p1, T &p2)
 {
@@ -72,14 +147,17 @@ void Swap(T &p1, T &p2)
 	p1 = p2;
 	p2 = temp;
 }
+
 bool Ascending(string a, string b)
 {
 	return a.compare(b) > 0;
 }
+
 bool Descending(string a, string b)
 {
 	return a.compare(b) < 0;
 }
+
 template <class T>
 void QLPhong<T>::Sort(bool (*CompareChoice)(string, string))
 {
@@ -95,11 +173,12 @@ void QLPhong<T>::Sort(bool (*CompareChoice)(string, string))
 		Swap((*this)[i], (*this)[min]);
 	}
 }
+
 template <class T>
 void QLPhong<T>::Input()
 {
 	int flag;
-	do
+	while (true)
 	{
 		cout << "*========================Moi ban chon:=======================*" << endl;
 		cout << "+----------------------+-------------------------------------+" << endl;
@@ -107,27 +186,32 @@ void QLPhong<T>::Input()
 		cout << "+----------------------+-------------------------------------+" << endl;
 		cout << "Nhap lua chon : ";
 		cin >> flag;
+		T *PhongMoi;
 		if (flag == 1)
 		{
-			PhongBT *newPhongBT = new PhongBT;
-			newPhongBT->Input();
-			Add(newPhongBT);
+			PhongMoi = new PhongBT;
+			PhongMoi->Input();
+			Add(PhongMoi);
 		}
 		else if (flag == 2)
 		{
-			PhongVip *newPhongVIP = new PhongVip;
-			newPhongVIP->Input();
-			Add(newPhongVIP);
+			PhongMoi = new PhongVip;
+			PhongMoi->Input();
+			Add(PhongMoi);
 		}
-	} while (flag != 0);
+		else if (flag == 0)
+			break;
+		else
+			cout << "Lua chon khong hop le ! " << endl;
+	}
 }
+
 template <class T>
 ostream &operator<<(ostream &o, const QLPhong<T> &ql)
 {
-	o << "Danh sach Phong : " << endl;
+	o << "Danh sach phong : " << endl;
 	for (int i = 0; i < ql.size; i++)
 	{
-		o << *(ql.data + i);
+		ql.data[i]->Output();
 	}
-	return o;
 }

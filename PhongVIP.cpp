@@ -31,12 +31,11 @@ void PhongVip::Input()
 		this->DonGia = Tang5;
 		break;
 	}
-	this->PhuThuVIP = this->SoNguoiToiDa / 10;
+	this->PhuThuVIP = (double)(this->SoNguoiToiDa) / 10;
 	this->GiaPhong = (this->DonGia * this->SoNguoiToiDa) + (this->PhuThuVIP * this->DonGia);
 }
 void PhongVip::Output()
 {
-	cout << "Phong loai Vip : ";
 	PhongKS::Output();
-	cout << DonGia << "\t" << PhuThuVIP << "\t" << GiaPhong << endl;
+	cout << DonGia << "\t" << PhuThuVIP << "\t" << fixed << GiaPhong << endl;
 }
