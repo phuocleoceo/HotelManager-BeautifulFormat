@@ -133,9 +133,13 @@ void QLPhong<T>::Update(const string &MSP)
 		cout << "Khong co phong nay, khong the sua !" << endl;
 	else
 	{
-		RemoveAt(k);
+		// RemoveAt(k);
+		// cout << "Nhap thong tin moi cho phong nay : " << endl;
+		// Input();
+
+		//Cach duoi thi khong the chon lai loai phong tuy y, neu muon phai Copy code tu Input() sang
 		cout << "Nhap thong tin moi cho phong nay : " << endl;
-		Input();
+		(*(this->data + k))->Input();
 	}
 }
 
