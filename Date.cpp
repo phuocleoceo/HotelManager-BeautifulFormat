@@ -20,3 +20,12 @@ istream &operator>>(istream &i, Date &d)
 	i >> d.year;
 	return i;
 }
+bool Date::checkDate()
+{
+	time_t now = time(0);
+	tm *ltm = localtime(&now);
+	int checkDay = ltm->tm_mday;
+	int checkMonth = 1 + ltm->tm_mon;
+	int checkYear = 1900 + ltm->tm_year;
+	return true;
+}

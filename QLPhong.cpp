@@ -133,10 +133,11 @@ void QLPhong<T>::Update(const string &MSP)
 		cout << "Khong co phong nay, khong the sua !" << endl;
 	else
 	{
+		RemoveAt(k);
 		cout << "Nhap thong tin moi cho phong nay : " << endl;
 		Input();
-		Swap((*this)[k], (*this)[this->size - 1]);
-		Remove((*this)[this->size - 1]);
+		// Swap((*this)[k], (*this)[this->size - 1]);
+		// Remove((*this)[this->size - 1]);
 	}
 }
 
@@ -167,7 +168,7 @@ void QLPhong<T>::Sort()
 	{
 		cout << "*========================Moi ban chon:=======================*" << endl;
 		cout << "+----------------------+-------------------------------------+" << endl;
-		cout << "|   1. SX tang dan    |    2. SX giam dan    |   0. Thoat    |" << endl;
+		cout << "|   1. SX tang dan     |   2. SX giam dan    |   0. Thoat    |" << endl;
 		cout << "+----------------------+-------------------------------------+" << endl;
 		cout << "Nhap lua chon : ";
 		cin >> flag;

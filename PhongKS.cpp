@@ -4,7 +4,11 @@ PhongKS::PhongKS()
 	NgayNhanPhong = new Date;
 	NgayTraPhong = new Date;
 }
-PhongKS::~PhongKS() {}
+PhongKS::~PhongKS()
+{
+	delete NgayNhanPhong;
+	delete NgayTraPhong;
+}
 string PhongKS::getMSP() const
 {
 	return this->MaPhong;

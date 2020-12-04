@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 using namespace std;
 class Date
 {
@@ -10,6 +11,7 @@ private:
 public:
 	Date();
 	~Date();
+	bool checkDate();
 	friend ostream &operator<<(ostream &, const Date &);
 	friend istream &operator>>(istream &, Date &);
 };
