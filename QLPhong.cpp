@@ -188,6 +188,7 @@ void QLPhong<T>::Sort()
 			if (CompareChoice((*(this->data + flag))->getMSP(), (*(this->data + j))->getMSP()))
 				flag = j;
 		}
+		//Trao doi dia chi chung tro toi , trao doi gia tri se gay sai sot o PhuThuVIP
 		temp = *(this->data + i);
 		*(this->data + i) = *(this->data + flag);
 		*(this->data + flag) = temp;
@@ -247,3 +248,4 @@ ostream &operator<<(ostream &o, const QLPhong<T> &ql)
 		ql.data[i]->Output();
 	}
 }
+

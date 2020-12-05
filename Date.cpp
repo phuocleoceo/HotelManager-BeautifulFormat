@@ -60,3 +60,12 @@ istream &operator>>(istream &i, Date &d)
 	} while (!d.checkDate());
 	return i;
 }
+
+bool Date::checkRealTime()
+{
+	time_t now = time(0);
+	tm *ltm = localtime(&now);
+	int realDay = ltm->tm_mday;
+	int realMonth = 1 + ltm->tm_mon;
+	int realYear = 1900 + ltm->tm_year;
+}

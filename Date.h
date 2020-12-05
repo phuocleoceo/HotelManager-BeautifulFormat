@@ -14,6 +14,7 @@ public:
 	~Date();
 	bool checkLeapYear();
 	bool checkDate();
+	bool checkRealTime();
 	friend ostream &operator<<(ostream &, const Date &);
 	friend istream &operator>>(istream &, Date &);
 };
