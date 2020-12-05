@@ -132,30 +132,10 @@ void QLPhong<T>::Update(const string &MSP)
 	if (k == -1)
 		cout << "Khong co phong nay, khong the sua !" << endl;
 	else
-	{
-		RemoveAt(k);
-		T *PhongMoi;
-		int flag;
-		do
-		{
-			cout << "=======Ban muon sua thanh loai phong nao? ========" << endl;
-			cout << "---------(1: Phong thuong ; 2: Phong vip ; 0:Thoat)---------" << endl;
-			cout << "Lua chon : ";
-			cin >> flag;
-			if (flag == 1)
-			{
-				PhongMoi=new PhongBT;
-				PhongMoi->Input();
-				Add(PhongMoi,k);
-			}
-			else if (flag == 2)
-			{
-				PhongMoi=new PhongVIP;
-				PhongMoi->Input();
-				Add(PhongMoi,k);
-			}
-			else if(flag==0) break;
-		} while (flag != 1 || flag != 2);
+	{			 //Tao phong moi o cuoi Danh sach, Swap no voi phong can sua roi xoa Phong can sua(o cuoi danh sach)
+		Input(); //Tao phong moi va them no vao cuoi Mang, luc nay this->size da tang them 1
+		*(*(this->data + k)) = *(*(this->data + (this->size - 1)));
+		RemoveAt(this->size - 1);
 	}
 }
 
@@ -185,16 +165,31 @@ void QLPhong<T>::Sort()
 		if (flag == 1)
 		{
 			CompareChoice = Ascending;
+			break;
 		}
 		else if (flag == 2)
 		{
 			CompareChoice = Descending;
+			break;
 		}
 		else if (flag == 0)
 			break;
 		else
 			cout << "Lua chon khong hop le ! " << endl;
 	}
+	// T *temp = new T;
+	// for (int i = 0; i < this->size - 1; i++)
+	// {
+	// 	int flag = i;
+	// 	for (int j = i + 1; j < this->size; j++)
+	// 	{
+	// 		if (CompareChoice((*(this->data + flag))->getMSP(), (*(this->data + j))->getMSP()))
+	// 			flag = j;
+	// 	}
+	// 	*temp = *(*(this->data + i));
+	// 	*(*(this->data + i)) = *(*(this->data + flag));
+	// 	*(*(this->data + flag)) = *temp;
+	// }
 	T *temp = new T;
 	for (int i = 0; i < this->size - 1; i++)
 	{
@@ -204,9 +199,9 @@ void QLPhong<T>::Sort()
 			if (CompareChoice((*(this->data + flag))->getMSP(), (*(this->data + j))->getMSP()))
 				flag = j;
 		}
-		*temp = *(*(this->data + i));
-		*(*(this->data + i)) = *(*(this->data + flag));
-		*(*(this->data + flag)) = *temp;
+		temp = *(this->data + i);
+		*(this->data + i) = *(this->data + flag);
+		*(this->data + flag) = temp;
 	}
 }
 
@@ -228,12 +223,14 @@ void QLPhong<T>::Input()
 			PhongMoi = new PhongBT;
 			PhongMoi->Input();
 			Add(PhongMoi);
+			break;
 		}
 		else if (flag == 2)
 		{
 			PhongMoi = new PhongVIP;
 			PhongMoi->Input();
 			Add(PhongMoi);
+			break;
 		}
 		else if (flag == 0)
 			break;

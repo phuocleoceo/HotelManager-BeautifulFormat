@@ -7,6 +7,6 @@ private:
 public:
 	PhongBT();
 	~PhongBT();
-	void Input();
-	void Output();
+	virtual void Input();
+	virtual void Output();
 };
