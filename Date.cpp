@@ -18,6 +18,11 @@ bool Date::checkDate()
 		return false;
 	if (day < 1 || day > 31)
 		return false;
+	if (month == 4 || month == 6 || month == 9 || month == 11)
+	{
+		if (day > 30)
+			return false;
+	}
 	if (month == 2)
 	{
 		if (checkLeapYear())
@@ -31,17 +36,12 @@ bool Date::checkDate()
 				return false;
 		}
 	}
-	if (month == 4 || month == 6 || month == 9 || month == 11)
-	{
-		if (day > 30)
-			return false;
-	}
 	return true;
 }
 ostream &operator<<(ostream &o, const Date &d)
 {
 	if (&d != NULL)
-		o << "     " << setw(2) << d.day << "/" << setw(2) << d.month << "/" << setw(4) << d.year;
+		o << setw(7) << d.day << "/" << setw(2) << d.month << "/" << setw(4) << d.year;
 	else
 		o << setw(15) << "NULL";
 }

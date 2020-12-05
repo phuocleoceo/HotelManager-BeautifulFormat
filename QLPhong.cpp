@@ -175,7 +175,7 @@ void QLPhong<T>::Sort()
 			CompareChoice = Descending;
 		}
 		else if (flag == 0)
-			return;
+			break;
 		else
 			cout << "Lua chon khong hop le ! " << endl;
 	}
