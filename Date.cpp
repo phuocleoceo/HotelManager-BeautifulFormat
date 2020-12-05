@@ -68,4 +68,10 @@ bool Date::checkRealTime()
 	int realDay = ltm->tm_mday;
 	int realMonth = 1 + ltm->tm_mon;
 	int realYear = 1900 + ltm->tm_year;
+	int realDate = realYear * 10000 + realMonth * 100 + realDay;
+	int thisDate = this->year * 10000 + this->month * 100 + this->day;
+	if (thisDate >= realDate)
+		return true;
+	else
+		return false;
 }
