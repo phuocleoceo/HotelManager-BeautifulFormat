@@ -8,9 +8,9 @@ enum DonGiaPhongVIP
 	Tang5 = 500000
 };
 
-PhongVip::PhongVip() {}
-PhongVip::~PhongVip() {}
-void PhongVip::Input()
+PhongVIP::PhongVIP() {}
+PhongVIP::~PhongVIP() {}
+void PhongVIP::Input()
 {
 	PhongKS::Input();
 	switch (MaPhong[0])
@@ -34,7 +34,7 @@ void PhongVip::Input()
 	this->PhuThuVIP = (double)(this->SoNguoiToiDa) / 10;
 	this->GiaPhong = (this->DonGia * this->SoNguoiToiDa) + (this->PhuThuVIP * this->DonGia);
 }
-void PhongVip::Output()
+void PhongVIP::Output()
 {
 	PhongKS::Output();
 	cout << setw(7) << DonGia << " | " << setw(11) << PhuThuVIP << " | " << setw(15) << GiaPhong << " | " << endl;

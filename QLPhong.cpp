@@ -133,13 +133,29 @@ void QLPhong<T>::Update(const string &MSP)
 		cout << "Khong co phong nay, khong the sua !" << endl;
 	else
 	{
-		// RemoveAt(k);
-		// cout << "Nhap thong tin moi cho phong nay : " << endl;
-		// Input();
-
-		//Cach duoi thi khong the chon lai loai phong tuy y, neu muon phai Copy code tu Input() sang
-		cout << "Nhap thong tin moi cho phong nay : " << endl;
-		(*(this->data + k))->Input();
+		RemoveAt(k);
+		T *PhongMoi;
+		int flag;
+		do
+		{
+			cout << "=======Ban muon sua thanh loai phong nao? ========" << endl;
+			cout << "---------(1: Phong thuong ; 2: Phong vip ; 0:Thoat)---------" << endl;
+			cout << "Lua chon : ";
+			cin >> flag;
+			if (flag == 1)
+			{
+				PhongMoi=new PhongBT;
+				PhongMoi->Input();
+				Add(PhongMoi,k);
+			}
+			else if (flag == 2)
+			{
+				PhongMoi=new PhongVIP;
+				PhongMoi->Input();
+				Add(PhongMoi,k);
+			}
+			else if(flag==0) break;
+		} while (flag != 1 || flag != 2);
 	}
 }
 
@@ -215,7 +231,7 @@ void QLPhong<T>::Input()
 		}
 		else if (flag == 2)
 		{
-			PhongMoi = new PhongVip;
+			PhongMoi = new PhongVIP;
 			PhongMoi->Input();
 			Add(PhongMoi);
 		}

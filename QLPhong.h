@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-template <class T>
+template <class T = PhongKS>
 class QLPhong
 {
 private:
@@ -15,7 +15,7 @@ private:
 public:
 	QLPhong();
 	~QLPhong();
-	T* operator[](const int &);
+	T *operator[](const int &);
 	const T &operator=(const T &);
 	template <class U>
 	friend ostream &operator<<(ostream &, const QLPhong<U> &);
@@ -24,7 +24,7 @@ public:
 	int IndexOf(const string &);
 	void RemoveAt(const int &);
 	void Remove(T *);
-	void Update(const string &);	
+	void Update(const string &);
 	void Input();
 	void Sort();
 };

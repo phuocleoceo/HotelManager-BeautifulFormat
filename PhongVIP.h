@@ -1,13 +1,13 @@
 #pragma once
 #include "PhongKS.h"
-class PhongVip : public PhongKS
+class PhongVIP : public PhongKS
 {
 private:
 	double DonGia;
 	double PhuThuVIP;
 public:
-	PhongVip();
-	~PhongVip();
+	PhongVIP();
+	~PhongVIP();
 	void Input();
 	void Output();
 };
