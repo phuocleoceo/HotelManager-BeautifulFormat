@@ -132,9 +132,11 @@ void QLPhong<T>::Update(const string &MSP)
 	if (k == -1)
 		cout << "Khong co phong nay, khong the sua !" << endl;
 	else
-	{			 //Tao phong moi o cuoi Danh sach, Swap no voi phong can sua roi xoa Phong can sua(o cuoi danh sach)
+	{
+		//Tao phong moi o cuoi Danh sach, Swap no voi phong can sua roi xoa Phong can sua(o cuoi danh sach)
 		Input(); //Tao phong moi va them no vao cuoi Mang, luc nay this->size da tang them 1
-		*(*(this->data + k)) = *(*(this->data + (this->size - 1)));
+		*(this->data + k) = *(this->data + (this->size - 1));
+		*(this->data + (this->size - 1)) = nullptr;
 		RemoveAt(this->size - 1);
 	}
 }
@@ -177,19 +179,6 @@ void QLPhong<T>::Sort()
 		else
 			cout << "Lua chon khong hop le ! " << endl;
 	}
-	// T *temp = new T;
-	// for (int i = 0; i < this->size - 1; i++)
-	// {
-	// 	int flag = i;
-	// 	for (int j = i + 1; j < this->size; j++)
-	// 	{
-	// 		if (CompareChoice((*(this->data + flag))->getMSP(), (*(this->data + j))->getMSP()))
-	// 			flag = j;
-	// 	}
-	// 	*temp = *(*(this->data + i));
-	// 	*(*(this->data + i)) = *(*(this->data + flag));
-	// 	*(*(this->data + flag)) = *temp;
-	// }
 	T *temp = new T;
 	for (int i = 0; i < this->size - 1; i++)
 	{
