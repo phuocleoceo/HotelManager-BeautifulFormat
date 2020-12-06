@@ -35,7 +35,7 @@ void PhongBT::Input()
 void PhongBT::Output()
 {
 	PhongKS::Output();
-	cout << setw(7) << DonGia << " | " << setw(11) << "0"
-		 << " | " << setw(15) << fixed << setprecision(0) << GiaPhong << " | " << endl;
+	cout << setw(7) << DonGia << " | " << setw(11) << "0";
+	cout << " | " << setw(15) << fixed << setprecision(0) << GiaPhong << " | " << endl;
 	cout << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
 }

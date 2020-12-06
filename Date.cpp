@@ -12,7 +12,8 @@ bool Date::checkLeapYear()
 }
 bool Date::checkDate()
 {
-	if (year < 0 || year > 9999)
+	//ctime : since 1/1/1970
+	if (year < 1970 || year > 9999)
 		return false;
 	if (month < 1 || month > 12)
 		return false;
@@ -38,6 +39,20 @@ bool Date::checkDate()
 	}
 	return true;
 }
+bool Date::checkRealTime()
+{
+	time_t now = time(0);
+	tm *ltm = localtime(&now);
+	int realDay = ltm->tm_mday;
+	int realMonth = 1 + ltm->tm_mon;
+	int realYear = 1900 + ltm->tm_year;
+	int realDate = realYear * 10000 + realMonth * 100 + realDay;
+	int thisDate = this->year * 10000 + this->month * 100 + this->day;
+	if (thisDate >= realDate)
+		return true;
+	else
+		return false;
+}
 ostream &operator<<(ostream &o, const Date &d)
 {
 	if (&d != NULL)
@@ -59,19 +74,4 @@ istream &operator>>(istream &i, Date &d)
 			cout << "Ngay thang nam khong hop le ! Nhap lai ! " << endl;
 	} while (!d.checkDate());
 	return i;
-}
-
-bool Date::checkRealTime()
-{
-	time_t now = time(0);
-	tm *ltm = localtime(&now);
-	int realDay = ltm->tm_mday;
-	int realMonth = 1 + ltm->tm_mon;
-	int realYear = 1900 + ltm->tm_year;
-	int realDate = realYear * 10000 + realMonth * 100 + realDay;
-	int thisDate = this->year * 10000 + this->month * 100 + this->day;
-	if (thisDate >= realDate)
-		return true;
-	else
-		return false;
 }
