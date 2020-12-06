@@ -20,7 +20,7 @@ void PhongKS::Input()
 	getline(cin, MaPhong);
 	cout << "Nhap so nguoi toi da : ";
 	cin >> SoNguoiToiDa;
-	cout << "Nhap tinh trang (1 hoac 0) : ";
+	cout << "Nhap tinh trang (1: Trong ; 0: Da co khach) : ";
 	cin >> TinhTrang;
 	if (TinhTrang == true)
 	{

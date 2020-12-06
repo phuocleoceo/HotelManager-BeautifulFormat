@@ -39,5 +39,7 @@ void PhongVIP::Output()
 	PhongKS::Output();
 	cout << setw(7) << DonGia << " | " << setw(11) << PhuThuVIP << " | ";
 	cout << setw(15) << fixed << setprecision(0) << GiaPhong << " | " << endl;
+	cout.unsetf(ios_base::floatfield);
+	cout << setprecision(7);
 	cout << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
 }
