@@ -26,7 +26,8 @@ int main()
 		switch (FLAG)
 		{
 		case 1:
-			qlp->Input();
+			// qlp->Input();
+			cin>>*qlp;
 			break;
 		case 2:
 			cout << "Nhap ma so phong can sua : ";

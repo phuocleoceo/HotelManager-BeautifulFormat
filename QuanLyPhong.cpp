@@ -141,7 +141,7 @@ void QuanLyPhong<T>::Update(const string &MSP)
 	else
 	{
 		//Tao phong moi o cuoi Danh sach, Swap no voi phong can sua roi xoa Phong can sua(o cuoi danh sach)
-		Input(); //Tao phong moi va them no vao cuoi Mang, luc nay this->size da tang them 1
+		cin >> (*this); //Tao phong moi va them no vao cuoi Mang, luc nay this->size da tang them 1
 		*(this->data + k) = *(this->data + (this->size - 1));
 		*(this->data + (this->size - 1)) = nullptr;
 		RemoveAt(this->size - 1);
@@ -203,7 +203,7 @@ void QuanLyPhong<T>::Sort()
 }
 
 template <class T>
-void QuanLyPhong<T>::Input()
+istream &operator>>(istream &i, QuanLyPhong<T> &ql)
 {
 	int flag;
 	while (true)
@@ -219,14 +219,14 @@ void QuanLyPhong<T>::Input()
 		{
 			PhongMoi = new PhongBT;
 			PhongMoi->Input();
-			Add(PhongMoi);
+			ql.Add(PhongMoi);
 			break;
 		}
 		else if (flag == 2)
 		{
 			PhongMoi = new PhongVIP;
 			PhongMoi->Input();
-			Add(PhongMoi);
+			ql.Add(PhongMoi);
 			break;
 		}
 		else if (flag == 0)
@@ -234,8 +234,8 @@ void QuanLyPhong<T>::Input()
 		else
 			cout << "Lua chon khong hop le ! " << endl;
 	}
+	return i;
 }
-
 template <class T>
 ostream &operator<<(ostream &o, const QuanLyPhong<T> &ql)
 {
