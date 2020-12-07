@@ -6,19 +6,19 @@
 using namespace std;
 
 template <class T = PhongKS>
-class QLPhong
+class QuanLyPhong
 {
 private:
 	T **data;
 	int size;
 
 public:
-	QLPhong();
-	~QLPhong();
+	QuanLyPhong();
+	~QuanLyPhong();
 	T *operator[](const int &);
-	const T &operator=(const T &);
+	// const QuanLyPhong &operator=(const QuanLyPhong &);
 	template <class U>
-	friend ostream &operator<<(ostream &, const QLPhong<U> &);
+	friend ostream &operator<<(ostream &, const QuanLyPhong<U> &);
 	void Add(T *, const int &);
 	void Add(T *);
 	int IndexOf(const string &);

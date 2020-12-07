@@ -1,11 +1,11 @@
 #include <iostream>
-#include "QLPhong.cpp"
+#include "QuanLyPhong.cpp"
 #include "PhongVIP.h"
 #include "PhongBT.h"
 using namespace std;
 int main()
 {
-	QLPhong<PhongKS> *qlp = new QLPhong<PhongKS>;
+	QuanLyPhong<PhongKS> *qlp = new QuanLyPhong<PhongKS>;
 	string MSP;
 	int Vitri;
 	int FLAG;

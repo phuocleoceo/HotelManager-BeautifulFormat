@@ -1,20 +1,20 @@
-#include "QLPhong.h"
+#include "QuanLyPhong.h"
 
 template <class T>
-QLPhong<T>::QLPhong()
+QuanLyPhong<T>::QuanLyPhong()
 {
 	this->data = nullptr;
 	this->size = 0;
 }
 
 template <class T>
-QLPhong<T>::~QLPhong()
+QuanLyPhong<T>::~QuanLyPhong()
 {
 	delete[] this->data;
 }
 
 template <class T>
-T *QLPhong<T>::operator[](const int &index)
+T *QuanLyPhong<T>::operator[](const int &index)
 {
 	try
 	{
@@ -29,13 +29,14 @@ T *QLPhong<T>::operator[](const int &index)
 	};
 }
 
-template <class T>
-const T &QLPhong<T>::operator=(const T &p)
-{
-}
+// template <class T>
+// const QuanLyPhong& QuanLyPhong<T>::operator=(const QuanLyPhong &p)
+// {
+	
+// }
 
 template <class T>
-void QLPhong<T>::Add(T *p, const int &k)
+void QuanLyPhong<T>::Add(T *p, const int &k)
 {
 	if (this->size == 0)
 	{
@@ -65,13 +66,13 @@ void QLPhong<T>::Add(T *p, const int &k)
 }
 
 template <class T>
-void QLPhong<T>::Add(T *p)
+void QuanLyPhong<T>::Add(T *p)
 {
 	Add(p, this->size);
 }
 
 template <class T>
-int QLPhong<T>::IndexOf(const string &MSP)
+int QuanLyPhong<T>::IndexOf(const string &MSP)
 {
 	for (int i = 0; i < this->size; i++)
 	{
@@ -82,7 +83,7 @@ int QLPhong<T>::IndexOf(const string &MSP)
 }
 
 template <class T>
-void QLPhong<T>::RemoveAt(const int &k)
+void QuanLyPhong<T>::RemoveAt(const int &k)
 {
 	if (k == 0 && this->size == 1)
 	{
@@ -116,7 +117,7 @@ void QLPhong<T>::RemoveAt(const int &k)
 }
 
 template <class T>
-void QLPhong<T>::Remove(T *p)
+void QuanLyPhong<T>::Remove(T *p)
 {
 	int k = IndexOf(p->getMSP());
 	if (k == -1)
@@ -126,7 +127,7 @@ void QLPhong<T>::Remove(T *p)
 }
 
 template <class T>
-void QLPhong<T>::Update(const string &MSP)
+void QuanLyPhong<T>::Update(const string &MSP)
 {
 	int k = IndexOf(MSP);
 	if (k == -1)
@@ -152,7 +153,7 @@ bool Descending(string a, string b)
 }
 
 template <class T>
-void QLPhong<T>::Sort()
+void QuanLyPhong<T>::Sort()
 {
 	bool (*CompareChoice)(string, string);
 	int flag;
@@ -196,7 +197,7 @@ void QLPhong<T>::Sort()
 }
 
 template <class T>
-void QLPhong<T>::Input()
+void QuanLyPhong<T>::Input()
 {
 	int flag;
 	while (true)
@@ -230,7 +231,7 @@ void QLPhong<T>::Input()
 }
 
 template <class T>
-ostream &operator<<(ostream &o, const QLPhong<T> &ql)
+ostream &operator<<(ostream &o, const QuanLyPhong<T> &ql)
 {
 	o << "Danh sach phong : " << endl;
 	o << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
