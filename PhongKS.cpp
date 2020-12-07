@@ -29,15 +29,21 @@ void PhongKS::Input()
 	}
 	else
 	{
-		cout << "Nhap ngay nhan phong : ";
-		cin >> *NgayNhanPhong;
+		do
+		{
+			cout << "Nhap ngay nhan phong : ";
+			cin >> *NgayNhanPhong;
+			if (NgayTraPhong->checkRealTime(true) == false)
+				cout << "<< Ngay nhan phong phai tinh tu ngay hom nay tro ve truoc ! >>";
+		} while (NgayTraPhong->checkRealTime(true) == false);
+
 		do
 		{
 			cout << "Nhap ngay tra phong : ";
 			cin >> *NgayTraPhong;
-			if (NgayTraPhong->checkRealTime() == false)
-				cout << "<<Ngay tra phong phai tinh tu ngay hom nay tro di ! " << endl;
-		} while (NgayTraPhong->checkRealTime() == false);
+			if (NgayTraPhong->checkRealTime(false) == false)
+				cout << "<< Ngay tra phong phai tinh tu ngay hom nay tro ve sau ! >>" << endl;
+		} while (NgayTraPhong->checkRealTime(false) == false);
 	}
 }
 void PhongKS::Output()

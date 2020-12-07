@@ -39,8 +39,9 @@ bool Date::checkDate()
 	}
 	return true;
 }
-bool Date::checkRealTime()
+bool Date::checkRealTime(bool DateType)
 {
+	//DateType la true thi dung cho NgayNhanPhong , false cho NgayTraPhong
 	time_t now = time(0);
 	tm *ltm = localtime(&now);
 	int realDay = ltm->tm_mday;
@@ -48,10 +49,10 @@ bool Date::checkRealTime()
 	int realYear = 1900 + ltm->tm_year;
 	int realDate = realYear * 10000 + realMonth * 100 + realDay;
 	int thisDate = this->year * 10000 + this->month * 100 + this->day;
-	if (thisDate >= realDate)
-		return true;
+	if (DateType == true)
+		return thisDate <= realDate ? true : false;
 	else
-		return false;
+		return thisDate >= realDate ? true : false;
 }
 ostream &operator<<(ostream &o, const Date &d)
 {
