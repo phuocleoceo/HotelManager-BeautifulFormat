@@ -29,11 +29,17 @@ T *QuanLyPhong<T>::operator[](const int &index)
 	};
 }
 
-// template <class T>
-// const QuanLyPhong& QuanLyPhong<T>::operator=(const QuanLyPhong &p)
-// {
-	
-// }
+template <class T>
+const QuanLyPhong<T> &QuanLyPhong<T>::operator=(const QuanLyPhong<T> &p)
+{
+	this->size = p.size;
+	this->data = new T *[this->size];
+	for (int i = 0; i < p.size; i++)
+	{
+		*(this->data + i) = *(p.data + i);
+	}
+	return (*this);
+}
 
 template <class T>
 void QuanLyPhong<T>::Add(T *p, const int &k)
@@ -249,4 +255,3 @@ ostream &operator<<(ostream &o, const QuanLyPhong<T> &ql)
 		ql.data[i]->Output();
 	}
 }
-

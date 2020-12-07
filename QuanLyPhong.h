@@ -16,7 +16,7 @@ public:
 	QuanLyPhong();
 	~QuanLyPhong();
 	T *operator[](const int &);
-	// const QuanLyPhong &operator=(const QuanLyPhong &);
+	const QuanLyPhong<T> &operator=(const QuanLyPhong<T> &);
 	template <class U>
 	friend ostream &operator<<(ostream &, const QuanLyPhong<U> &);
 	void Add(T *, const int &);
