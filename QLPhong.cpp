@@ -158,7 +158,7 @@ void QLPhong<T>::Sort()
 	int flag;
 	while (true)
 	{
-		cout << "*========================Moi ban chon:=======================*" << endl;
+		cout << "*==============Moi ban chon phuong thuc sap xep :=============*" << endl;
 		cout << "+----------------------+-------------------------------------+" << endl;
 		cout << "|   1. SX tang dan     |   2. SX giam dan    |   0. Thoat    |" << endl;
 		cout << "+----------------------+-------------------------------------+" << endl;
@@ -177,7 +177,7 @@ void QLPhong<T>::Sort()
 		else if (flag == 0)
 			break;
 		else
-			cout << "Lua chon khong hop le ! " << endl;
+			cout << "> Lua chon khong hop le ! <" << endl;
 	}
 	T *temp = new T;
 	for (int i = 0; i < this->size - 1; i++)
@@ -201,7 +201,7 @@ void QLPhong<T>::Input()
 	int flag;
 	while (true)
 	{
-		cout << "*========================Moi ban chon:=======================*" << endl;
+		cout << "*===================Moi ban chon loai phong :=================*" << endl;
 		cout << "+----------------------+-------------------------------------+" << endl;
 		cout << "|   1. Phong Thuong    |    2. Phong VIP     |   0. Thoat    |" << endl;
 		cout << "+----------------------+-------------------------------------+" << endl;

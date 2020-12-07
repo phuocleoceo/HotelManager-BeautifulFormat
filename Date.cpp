@@ -72,7 +72,7 @@ istream &operator>>(istream &i, Date &d)
 		cout << ">> Nhap nam : ";
 		i >> d.year;
 		if (!d.checkDate())
-			cout << "Ngay thang nam khong hop le ! Nhap lai ! " << endl;
+			cout << "> Ngay thang nam khong hop le ! Nhap lai ! <" << endl;
 	} while (!d.checkDate());
 	return i;
 }
