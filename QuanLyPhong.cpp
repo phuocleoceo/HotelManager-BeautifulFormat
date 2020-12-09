@@ -3,14 +3,14 @@
 template <class T>
 QuanLyPhong<T>::QuanLyPhong()
 {
-	this->data = nullptr;
-	this->size = 0;
+	this->DanhSachPhong = nullptr;
+	this->SoLuongPhong = 0;
 }
 
 template <class T>
 QuanLyPhong<T>::~QuanLyPhong()
 {
-	delete[] this->data;
+	delete[] this->DanhSachPhong;
 }
 
 template <class T>
@@ -18,8 +18,8 @@ T *QuanLyPhong<T>::operator[](const int &index)
 {
 	try
 	{
-		if (index >= 0 && index < this->size)
-			return *(this->data + index);
+		if (index >= 0 && index < this->SoLuongPhong)
+			return *(this->DanhSachPhong + index);
 		else
 			throw string(">> Chi so khong hop le ! <<");
 	}
@@ -32,11 +32,11 @@ T *QuanLyPhong<T>::operator[](const int &index)
 template <class T>
 const QuanLyPhong<T> &QuanLyPhong<T>::operator=(const QuanLyPhong<T> &p)
 {
-	this->size = p.size;
-	this->data = new T *[this->size];
-	for (int i = 0; i < p.size; i++)
+	this->SoLuongPhong = p.SoLuongPhong;
+	this->DanhSachPhong = new T *[this->SoLuongPhong];
+	for (int i = 0; i < p.SoLuongPhong; i++)
 	{
-		*(this->data + i) = *(p.data + i);
+		*(this->DanhSachPhong + i) = *(p.DanhSachPhong + i);
 	}
 	return (*this);
 }
@@ -44,43 +44,43 @@ const QuanLyPhong<T> &QuanLyPhong<T>::operator=(const QuanLyPhong<T> &p)
 template <class T>
 void QuanLyPhong<T>::Add(T *p, const int &k)
 {
-	if (this->size == 0)
+	if (this->SoLuongPhong == 0)
 	{
-		this->data = new T *[this->size + 1];
-		this->data[this->size] = p;
+		this->DanhSachPhong = new T *[this->SoLuongPhong + 1];
+		this->DanhSachPhong[this->SoLuongPhong] = p;
 	}
 	else
 	{
-		T **temp = new T *[this->size];
-		for (int i = 0; i < this->size; i++)
+		T **temp = new T *[this->SoLuongPhong];
+		for (int i = 0; i < this->SoLuongPhong; i++)
 		{
-			*(temp + i) = *(this->data + i);
+			*(temp + i) = *(this->DanhSachPhong + i);
 		}
-		delete[] this->data;
-		this->data = new T *[this->size + 1];
-		this->data[k] = p;
+		delete[] this->DanhSachPhong;
+		this->DanhSachPhong = new T *[this->SoLuongPhong + 1];
+		this->DanhSachPhong[k] = p;
 		for (int i = 0; i < k; i++)
 		{
-			*(this->data + i) = *(temp + i);
+			*(this->DanhSachPhong + i) = *(temp + i);
 		}
-		for (int i = k + 1; i <= this->size; i++)
+		for (int i = k + 1; i <= this->SoLuongPhong; i++)
 		{
-			*(this->data + i) = *(temp + i - 1);
+			*(this->DanhSachPhong + i) = *(temp + i - 1);
 		}
 	}
-	this->size++;
+	this->SoLuongPhong++;
 }
 
 template <class T>
 void QuanLyPhong<T>::Add(T *p)
 {
-	Add(p, this->size);
+	Add(p, this->SoLuongPhong);
 }
 
 template <class T>
 int QuanLyPhong<T>::IndexOf(const string &MSP)
 {
-	for (int i = 0; i < this->size; i++)
+	for (int i = 0; i < this->SoLuongPhong; i++)
 	{
 		if ((*this)[i]->getMSP().compare(MSP) == 0)
 			return i;
@@ -96,35 +96,35 @@ void QuanLyPhong<T>::RemoveAt(const int &k)
 		cout << ">> Khong ton tai phong nay de xoa ! <<" << endl;
 		return;
 	}
-	if (k == 0 && this->size == 1)
+	if (k == 0 && this->SoLuongPhong == 1)
 	{
-		delete[] this->data;
-		this->data = nullptr;
-		this->size = 0;
+		delete[] this->DanhSachPhong;
+		this->DanhSachPhong = nullptr;
+		this->SoLuongPhong = 0;
 	}
-	else if (k >= this->size)
+	else if (k >= this->SoLuongPhong)
 	{
 		return;
 	}
 	else
 	{
-		for (int i = k; i < this->size - 1; i++)
+		for (int i = k; i < this->SoLuongPhong - 1; i++)
 		{
-			this->data[i] = this->data[i + 1];
+			this->DanhSachPhong[i] = this->DanhSachPhong[i + 1];
 		}
-		T **temp = new T *[this->size];
-		for (int i = 0; i < this->size - 1; i++)
+		T **temp = new T *[this->SoLuongPhong];
+		for (int i = 0; i < this->SoLuongPhong - 1; i++)
 		{
-			*(temp + i) = *(this->data + i);
+			*(temp + i) = *(this->DanhSachPhong + i);
 		}
-		delete[] this->data;
-		this->data = new T *[this->size - 1];
-		for (int i = 0; i < this->size - 1; i++)
+		delete[] this->DanhSachPhong;
+		this->DanhSachPhong = new T *[this->SoLuongPhong - 1];
+		for (int i = 0; i < this->SoLuongPhong - 1; i++)
 		{
-			*(this->data + i) = *(temp + i);
+			*(this->DanhSachPhong + i) = *(temp + i);
 		}
 	}
-	this->size--;
+	this->SoLuongPhong--;
 	cout << ">> Xoa thanh cong ! <<" << endl;
 }
 
@@ -160,10 +160,10 @@ void QuanLyPhong<T>::Update(const string &MSP)
 	else
 	{
 		//Tao phong moi o cuoi Danh sach, Swap no voi phong can sua roi xoa Phong can sua(o cuoi danh sach)
-		cin >> (*this); //Tao phong moi va them no vao cuoi Mang, luc nay this->size da tang them 1
-		*(this->data + k) = *(this->data + (this->size - 1));
-		*(this->data + (this->size - 1)) = nullptr; //Huy lien ket giua data[size-1] voi doi tuong PhongMoi
-		RemoveAt(this->size - 1);
+		cin >> (*this); //Tao phong moi va them no vao cuoi Mang, luc nay this->SoLuongPhong da tang them 1
+		*(this->DanhSachPhong + k) = *(this->DanhSachPhong + (this->SoLuongPhong - 1));
+		*(this->DanhSachPhong + (this->SoLuongPhong - 1)) = nullptr; //Huy lien ket giua DanhSachPhong[SoLuongPhong-1] voi doi tuong PhongMoi
+		RemoveAt(this->SoLuongPhong - 1);
 		cout << ">> Sua thong tin phong thanh cong ! <<" << endl;
 	}
 }
@@ -214,18 +214,18 @@ void QuanLyPhong<T>::Sort()
 		}
 	}
 	T *temp = new T;
-	for (int i = 0; i < this->size - 1; i++)
+	for (int i = 0; i < this->SoLuongPhong - 1; i++)
 	{
 		int flag = i;
-		for (int j = i + 1; j < this->size; j++)
+		for (int j = i + 1; j < this->SoLuongPhong; j++)
 		{
-			if (CompareChoice((*(this->data + flag))->getMSP(), (*(this->data + j))->getMSP()))
+			if (CompareChoice((*(this->DanhSachPhong + flag))->getMSP(), (*(this->DanhSachPhong + j))->getMSP()))
 				flag = j;
 		}
 		//Trao doi dia chi chung tro toi , trao doi gia tri se gay sai sot o PhuThuVIP
-		temp = *(this->data + i);
-		*(this->data + i) = *(this->data + flag);
-		*(this->data + flag) = temp;
+		temp = *(this->DanhSachPhong + i);
+		*(this->DanhSachPhong + i) = *(this->DanhSachPhong + flag);
+		*(this->DanhSachPhong + flag) = temp;
 	}
 	cout<<">> Sap xep thanh cong ! <<"<<endl;
 }
@@ -287,8 +287,8 @@ ostream &operator<<(ostream &o, const QuanLyPhong<T> &ql)
 	  << "| Phu thu VIP "
 	  << "|    Gia phong    |" << endl;
 	o << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
-	for (int i = 0; i < ql.size; i++)
+	for (int i = 0; i < ql.SoLuongPhong; i++)
 	{
-		ql.data[i]->Output();
+		ql.DanhSachPhong[i]->Output();
 	}
 }

@@ -10,8 +10,8 @@ template <class T = PhongKS>
 class QuanLyPhong
 {
 private:
-	T **data;
-	int size;
+	T **DanhSachPhong;
+	int SoLuongPhong;
 
 public:
 	QuanLyPhong();
