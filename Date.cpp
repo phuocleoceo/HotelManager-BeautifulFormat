@@ -63,16 +63,25 @@ ostream &operator<<(ostream &o, const Date &d)
 }
 istream &operator>>(istream &i, Date &d)
 {
-	do
+	while (true)
 	{
-		cout << "\n>> Nhap ngay : ";
-		i >> d.day;
-		cout << ">> Nhap thang : ";
-		i >> d.month;
-		cout << ">> Nhap nam : ";
-		i >> d.year;
-		if (!d.checkDate())
-			cout << "> Ngay thang nam khong hop le ! Nhap lai ! <" << endl;
-	} while (!d.checkDate());
+		try
+		{
+			cout << "\n>> Nhap ngay : ";
+			i >> d.day;
+			cout << ">> Nhap thang : ";
+			i >> d.month;
+			cout << ">> Nhap nam : ";
+			i >> d.year;
+			if (!d.checkDate())
+				throw string("> Ngay thang nam khong hop le ! Nhap lai ! <");
+			else
+				break;
+		}
+		catch (string &e)
+		{
+			cout << e << endl;
+		}
+	}
 	return i;
 }

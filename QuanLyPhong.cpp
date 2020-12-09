@@ -21,7 +21,7 @@ T *QuanLyPhong<T>::operator[](const int &index)
 		if (index >= 0 && index < this->size)
 			return *(this->data + index);
 		else
-			throw string("Chi so khong hop le !");
+			throw string(">> Chi so khong hop le ! <<");
 	}
 	catch (string &e)
 	{
@@ -91,6 +91,11 @@ int QuanLyPhong<T>::IndexOf(const string &MSP)
 template <class T>
 void QuanLyPhong<T>::RemoveAt(const int &k)
 {
+	if (k < 0)
+	{
+		cout << ">> Khong ton tai phong nay de xoa ! <<" << endl;
+		return;
+	}
 	if (k == 0 && this->size == 1)
 	{
 		delete[] this->data;
@@ -120,6 +125,7 @@ void QuanLyPhong<T>::RemoveAt(const int &k)
 		}
 	}
 	this->size--;
+	cout << ">> Xoa thanh cong ! <<" << endl;
 }
 
 template <class T>
@@ -150,7 +156,7 @@ void QuanLyPhong<T>::Update(const string &MSP)
 {
 	int k = IndexOf(MSP);
 	if (k == -1)
-		cout << "Khong co phong nay, khong the sua !" << endl;
+		cout << ">> Khong co phong nay, khong the sua ! <<" << endl;
 	else
 	{
 		//Tao phong moi o cuoi Danh sach, Swap no voi phong can sua roi xoa Phong can sua(o cuoi danh sach)
@@ -158,6 +164,7 @@ void QuanLyPhong<T>::Update(const string &MSP)
 		*(this->data + k) = *(this->data + (this->size - 1));
 		*(this->data + (this->size - 1)) = nullptr; //Huy lien ket giua data[size-1] voi doi tuong PhongMoi
 		RemoveAt(this->size - 1);
+		cout << ">> Sua thong tin phong thanh cong ! <<" << endl;
 	}
 }
 
@@ -199,7 +206,7 @@ void QuanLyPhong<T>::Sort()
 			else if (flag == 0)
 				break;
 			else
-				throw string("> Lua chon khong hop le ! <");
+				throw string(">> Lua chon khong hop le ! <<");
 		}
 		catch (string &e)
 		{
@@ -220,6 +227,7 @@ void QuanLyPhong<T>::Sort()
 		*(this->data + i) = *(this->data + flag);
 		*(this->data + flag) = temp;
 	}
+	cout<<">> Sap xep thanh cong ! <<"<<endl;
 }
 
 template <class T>
@@ -240,6 +248,7 @@ istream &operator>>(istream &i, QuanLyPhong<T> &ql)
 			if (flag == 1)
 			{
 				PhongMoi = new PhongBT;
+				cin.ignore();
 				PhongMoi->Input();
 				ql.Add(PhongMoi);
 				break;
@@ -247,6 +256,7 @@ istream &operator>>(istream &i, QuanLyPhong<T> &ql)
 			else if (flag == 2)
 			{
 				PhongMoi = new PhongVIP;
+				cin.ignore();
 				PhongMoi->Input();
 				ql.Add(PhongMoi);
 				break;
@@ -254,7 +264,7 @@ istream &operator>>(istream &i, QuanLyPhong<T> &ql)
 			else if (flag == 0)
 				break;
 			else
-				throw string("Lua chon khong hop le !");
+				throw string(">> Lua chon khong hop le ! <<");
 		}
 		catch (string &e)
 		{

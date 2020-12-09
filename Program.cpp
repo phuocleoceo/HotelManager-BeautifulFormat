@@ -21,7 +21,7 @@ int main()
 			cout << "|      5. Tim Kiem Phong      |      6. Sap Xep              |         |" << endl;
 			cout << "+-----------------------------+------------------------------+---------+" << endl;
 
-			cout << "\nLua chon cua ban la : ";
+			cout << "\n>>Lua chon cua ban la : ";
 			cin >> FLAG;
 			cout << "--------------------------------------------------------------------------------------------------------------------------" << endl;
 			switch (FLAG)
@@ -33,13 +33,13 @@ int main()
 				cin >> *qlp;
 				break;
 			case 2:
-				cout << "Nhap ma so phong can sua : ";
+				cout << ">>Nhap ma so phong can sua : ";
 				cin.ignore();
 				getline(cin, MSP);
 				qlp->Update(MSP);
 				break;
 			case 3:
-				cout << "Nhap ma so phong can xoa : ";
+				cout << ">>Nhap ma so phong can xoa : ";
 				cin.ignore();
 				getline(cin, MSP);
 				qlp->RemoveAt(qlp->IndexOf(MSP));
@@ -48,7 +48,7 @@ int main()
 				cout << *qlp;
 				break;
 			case 5:
-				cout << "Nhap ma so phong can tim : ";
+				cout << ">>Nhap ma so phong can tim : ";
 				cin.ignore();
 				getline(cin, MSP);
 				qlp->Search(MSP);
@@ -57,7 +57,7 @@ int main()
 				qlp->Sort();
 				break;
 			default:
-				throw string("Lua chon khong hop le ! ");
+				throw string(">> Lua chon khong hop le ! <<");
 				break;
 			}
 			cout << "--------------------------------------------------------------------------------------------------------------------------" << endl;
