@@ -15,13 +15,21 @@ string PhongKS::getMSP() const
 }
 void PhongKS::Input()
 {
-	cout << "Nhap ma phong : ";
+	cout << "Nhap ma phong ( 10000 -> 59999 ) : ";
 	cin.ignore();
 	getline(cin, MaPhong);
-	cout << "Nhap so nguoi toi da : ";
-	cin >> SoNguoiToiDa;
+
+	do
+	{
+		cout << "Nhap so nguoi toi da ( 1 -> 4 ): ";
+		cin >> SoNguoiToiDa;
+		if (SoNguoiToiDa < 1 || SoNguoiToiDa > 4)
+			cout << "So nguoi toi da phai tu 1 -> 4 ! " << endl;
+	} while (SoNguoiToiDa < 1 || SoNguoiToiDa > 4);
+
 	cout << "Nhap tinh trang (1: Trong ; 0: Da co khach) : ";
 	cin >> TinhTrang;
+
 	if (TinhTrang == true)
 	{
 		NgayNhanPhong = NULL;

@@ -21,11 +21,11 @@ T *QuanLyPhong<T>::operator[](const int &index)
 		if (index >= 0 && index < this->size)
 			return *(this->data + index);
 		else
-			throw NULL;
+			throw string("Chi so khong hop le !");
 	}
-	catch (...)
+	catch (string &e)
 	{
-		cout << "Chi so khong hop le !" << endl;
+		cout << e << endl;
 	};
 }
 
@@ -123,16 +123,6 @@ void QuanLyPhong<T>::RemoveAt(const int &k)
 }
 
 template <class T>
-void QuanLyPhong<T>::Remove(T *p)
-{
-	int k = IndexOf(p->getMSP());
-	if (k == -1)
-		cout << "Khong co phong nay, khong the xoa !" << endl;
-	else
-		RemoveAt(k);
-}
-
-template <class T>
 void QuanLyPhong<T>::Search(const string &MSP)
 {
 	int Vitri = IndexOf(MSP);
@@ -188,26 +178,33 @@ void QuanLyPhong<T>::Sort()
 	int flag;
 	while (true)
 	{
-		cout << "*==============Moi ban chon phuong thuc sap xep :=============*" << endl;
-		cout << "+----------------------+-------------------------------------+" << endl;
-		cout << "|   1. SX tang dan     |   2. SX giam dan    |   0. Thoat    |" << endl;
-		cout << "+----------------------+-------------------------------------+" << endl;
-		cout << "Nhap lua chon : ";
-		cin >> flag;
-		if (flag == 1)
+		try
 		{
-			CompareChoice = Ascending;
-			break;
+			cout << "*==============Moi ban chon phuong thuc sap xep :=============*" << endl;
+			cout << "+----------------------+-------------------------------------+" << endl;
+			cout << "|   1. SX tang dan     |   2. SX giam dan    |   0. Tro Lai  |" << endl;
+			cout << "+----------------------+-------------------------------------+" << endl;
+			cout << "Nhap lua chon : ";
+			cin >> flag;
+			if (flag == 1)
+			{
+				CompareChoice = Ascending;
+				break;
+			}
+			else if (flag == 2)
+			{
+				CompareChoice = Descending;
+				break;
+			}
+			else if (flag == 0)
+				break;
+			else
+				throw string("> Lua chon khong hop le ! <");
 		}
-		else if (flag == 2)
+		catch (string &e)
 		{
-			CompareChoice = Descending;
-			break;
+			cout << e << endl;
 		}
-		else if (flag == 0)
-			break;
-		else
-			cout << "> Lua chon khong hop le ! <" << endl;
 	}
 	T *temp = new T;
 	for (int i = 0; i < this->size - 1; i++)
@@ -233,10 +230,9 @@ istream &operator>>(istream &i, QuanLyPhong<T> &ql)
 	{
 		try
 		{
-
 			cout << "*===================Moi ban chon loai phong :=================*" << endl;
 			cout << "+----------------------+-------------------------------------+" << endl;
-			cout << "|   1. Phong Thuong    |    2. Phong VIP     |   0. Thoat    |" << endl;
+			cout << "|   1. Phong Thuong    |    2. Phong VIP     |   0. Tro Lai  |" << endl;
 			cout << "+----------------------+-------------------------------------+" << endl;
 			cout << "Nhap lua chon : ";
 			cin >> flag;

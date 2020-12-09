@@ -1,3 +1,4 @@
+#pragma once
 #include "PhongKS.h"
 #include "PhongBT.h"
 #include "PhongVIP.h"
@@ -25,7 +26,6 @@ public:
 	void Add(T *);
 	int IndexOf(const string &);
 	void RemoveAt(const int &);
-	void Remove(T *);
 	void Search(const string &);
 	void Update(const string &);
 	void Input();
