@@ -30,14 +30,14 @@ bool CheckMSP(string MSP)
 }
 void PhongKS::Input()
 {
-	while(true)
+	while (true)
 	{
 		try
 		{
 			cout << "Nhap ma phong ( 10000 -> 59999 ) : ";
 			getline(cin, MaPhong);
 			if (!CheckMSP(MaPhong))
-				throw string("Ma phong khong hop le ! ");
+				throw string(">> Ma phong khong hop le ! <<");
 			else
 				break;
 		}
@@ -54,7 +54,7 @@ void PhongKS::Input()
 			cout << "Nhap so nguoi toi da ( 1 -> 4 ): ";
 			cin >> SoNguoiToiDa;
 			if (SoNguoiToiDa < 1 || SoNguoiToiDa > 4)
-				throw string("So nguoi toi da phai tu 1 -> 4 ! ");
+				throw string(">> So nguoi toi da phai tu 1 -> 4 ! <<");
 			else
 				break;
 		}
@@ -64,8 +64,26 @@ void PhongKS::Input()
 		}
 	}
 
-	cout << "Nhap tinh trang (1: Trong ; 0: Da co khach) : ";
-	cin >> TinhTrang;
+	while (true)
+	{
+		try
+		{
+			cout << "Nhap tinh trang (1: Trong ; 0: Da co khach) : ";
+			int Status;
+			cin >> Status;
+			if (Status != 0 && Status != 1)
+				throw string(">>Tinh trang khong hop le ! <<");
+			else
+			{
+				(Status == 0) ? TinhTrang = false : TinhTrang = true;
+				break;
+			}
+		}
+		catch (string &e)
+		{
+			cout << e << endl;
+		}
+	}
 
 	if (TinhTrang == true)
 	{
