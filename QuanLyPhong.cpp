@@ -140,6 +140,15 @@ void QuanLyPhong<T>::Search(const string &MSP)
 	{
 		cout << "Phong can tim co thong tin la : " << endl;
 		cout << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
+		cout << "| Ma phong "
+			 << "| So nguoi toi da "
+			 << "| Tinh trang "
+			 << "| Ngay nhan phong "
+			 << "| Ngay tra phong  "
+			 << "| Don gia "
+			 << "| Phu thu VIP "
+			 << "|    Gia phong    |" << endl;
+		cout << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
 		(*this)[Vitri]->Output();
 	}
 	else
@@ -222,38 +231,46 @@ istream &operator>>(istream &i, QuanLyPhong<T> &ql)
 	int flag;
 	while (true)
 	{
-		cout << "*===================Moi ban chon loai phong :=================*" << endl;
-		cout << "+----------------------+-------------------------------------+" << endl;
-		cout << "|   1. Phong Thuong    |    2. Phong VIP     |   0. Thoat    |" << endl;
-		cout << "+----------------------+-------------------------------------+" << endl;
-		cout << "Nhap lua chon : ";
-		cin >> flag;
-		T *PhongMoi;
-		if (flag == 1)
+		try
 		{
-			PhongMoi = new PhongBT;
-			PhongMoi->Input();
-			ql.Add(PhongMoi);
-			break;
+
+			cout << "*===================Moi ban chon loai phong :=================*" << endl;
+			cout << "+----------------------+-------------------------------------+" << endl;
+			cout << "|   1. Phong Thuong    |    2. Phong VIP     |   0. Thoat    |" << endl;
+			cout << "+----------------------+-------------------------------------+" << endl;
+			cout << "Nhap lua chon : ";
+			cin >> flag;
+			T *PhongMoi;
+			if (flag == 1)
+			{
+				PhongMoi = new PhongBT;
+				PhongMoi->Input();
+				ql.Add(PhongMoi);
+				break;
+			}
+			else if (flag == 2)
+			{
+				PhongMoi = new PhongVIP;
+				PhongMoi->Input();
+				ql.Add(PhongMoi);
+				break;
+			}
+			else if (flag == 0)
+				break;
+			else
+				throw string("Lua chon khong hop le !");
 		}
-		else if (flag == 2)
+		catch (string &e)
 		{
-			PhongMoi = new PhongVIP;
-			PhongMoi->Input();
-			ql.Add(PhongMoi);
-			break;
+			cout << e << endl;
 		}
-		else if (flag == 0)
-			break;
-		else
-			cout << "Lua chon khong hop le ! " << endl;
 	}
 	return i;
 }
 template <class T>
 ostream &operator<<(ostream &o, const QuanLyPhong<T> &ql)
 {
-	o << "Danh sach phong : " << endl;
+	o << "Danh sach phong ( Phong VIP thi co Phu Thu Vip > 0 ) :" << endl;
 	o << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
 	o << "| Ma phong "
 	  << "| So nguoi toi da "
