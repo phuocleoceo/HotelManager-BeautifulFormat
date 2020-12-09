@@ -7,7 +7,6 @@ int main()
 {
 	QuanLyPhong<PhongKS> *qlp = new QuanLyPhong<PhongKS>;
 	string MSP;
-	int Vitri;
 	int FLAG;
 	do
 	{
@@ -26,8 +25,7 @@ int main()
 		switch (FLAG)
 		{
 		case 1:
-			// qlp->Input();
-			cin>>*qlp;
+			cin >> *qlp;
 			break;
 		case 2:
 			cout << "Nhap ma so phong can sua : ";
@@ -39,8 +37,7 @@ int main()
 			cout << "Nhap ma so phong can xoa : ";
 			cin.ignore();
 			getline(cin, MSP);
-			Vitri = qlp->IndexOf(MSP);
-			qlp->RemoveAt(Vitri);
+			qlp->RemoveAt(qlp->IndexOf(MSP));
 			break;
 		case 4:
 			cout << *qlp;
@@ -49,15 +46,7 @@ int main()
 			cout << "Nhap ma so phong can tim : ";
 			cin.ignore();
 			getline(cin, MSP);
-			Vitri = qlp->IndexOf(MSP);
-			if (Vitri != -1)
-			{
-				cout << "Phong can tim co thong tin la : " << endl;
-				cout << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
-				(*qlp)[Vitri]->Output();
-			}
-			else
-				cout << "Khong tim thay ! " << endl;
+			qlp->Search(MSP);
 			break;
 		case 6:
 			qlp->Sort();

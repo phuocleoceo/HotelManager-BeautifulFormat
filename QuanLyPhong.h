@@ -26,6 +26,7 @@ public:
 	int IndexOf(const string &);
 	void RemoveAt(const int &);
 	void Remove(T *);
+	void Search(const string &);
 	void Update(const string &);
 	void Input();
 	void Sort();

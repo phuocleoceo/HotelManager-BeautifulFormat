@@ -37,7 +37,7 @@ void PhongBT::Output()
 	PhongKS::Output();
 	cout << setw(7) << DonGia << " | " << setw(11) << "0";
 	cout << " | " << setw(15) << fixed << setprecision(0) << GiaPhong << " | " << endl;
-	cout.unsetf(ios_base::floatfield); //vi setprecision anh huong den toan bo stream nen ta can fix lai 
+	cout.unsetf(ios_base::floatfield); //vi setprecision anh huong den toan bo stream nen ta can fix lai
 	cout << setprecision(7);
 	cout << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
 }

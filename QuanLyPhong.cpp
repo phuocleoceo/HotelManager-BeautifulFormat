@@ -133,6 +133,20 @@ void QuanLyPhong<T>::Remove(T *p)
 }
 
 template <class T>
+void QuanLyPhong<T>::Search(const string &MSP)
+{
+	int Vitri = IndexOf(MSP);
+	if (Vitri != -1)
+	{
+		cout << "Phong can tim co thong tin la : " << endl;
+		cout << "+----------+-----------------+------------+-----------------+-----------------+---------+-------------+-----------------+" << endl;
+		(*this)[Vitri]->Output();
+	}
+	else
+		cout << "Khong tim thay ! " << endl;
+}
+
+template <class T>
 void QuanLyPhong<T>::Update(const string &MSP)
 {
 	int k = IndexOf(MSP);
@@ -143,7 +157,7 @@ void QuanLyPhong<T>::Update(const string &MSP)
 		//Tao phong moi o cuoi Danh sach, Swap no voi phong can sua roi xoa Phong can sua(o cuoi danh sach)
 		cin >> (*this); //Tao phong moi va them no vao cuoi Mang, luc nay this->size da tang them 1
 		*(this->data + k) = *(this->data + (this->size - 1));
-		*(this->data + (this->size - 1)) = nullptr;
+		*(this->data + (this->size - 1)) = nullptr; //Huy lien ket giua data[size-1] voi doi tuong PhongMoi
 		RemoveAt(this->size - 1);
 	}
 }
